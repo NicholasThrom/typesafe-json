@@ -1,0 +1,41 @@
+{
+    "name": "ts-typesafe-json",
+    "version": "0.0.0",
+    "description": "An easy way to safely parse JSON in TypeScript.",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "lint": "tslint --project ./tsconfig.json",
+        "mocha": "mocha",
+        "test": "npm run typecheck -s && npm run lint -s && npm run mocha -s",
+        "typecheck": "tsc --noEmit"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NicholasThrom/ts-typesafe-json.git"
+    },
+    "keywords": [
+        "typescript",
+        "ts",
+        "typesafe",
+        "json"
+    ],
+    "author": "Nicholas Throm",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/NicholasThrom/ts-typesafe-json/issues"
+    },
+    "homepage": "https://github.com/NicholasThrom/ts-typesafe-json#readme",
+    "devDependencies": {
+        "@types/chai": "^4.1.4",
+        "@types/mocha": "^5.2.5",
+        "@types/sinon": "^5.0.1",
+        "chai": "^4.1.2",
+        "mocha": "^5.2.0",
+        "sinon": "^5.0.1",
+        "ts-node": "^7.0.0",
+        "tslint": "^5.11.0",
+        "typescript": "^3.0.1"
+    }
+}
