@@ -334,7 +334,7 @@ describe("typed-json.ts", function () {
                 const object = { a: {} };
                 object.a = object;
 
-                assert.throws(() => { new TypedJSON(object).stringify(); });
+                assert.strictEqual(new TypedJSON(object).stringify(), undefined);
             });
 
         });
@@ -370,7 +370,7 @@ describe("typed-json.ts", function () {
             });
 
             it("should return a `TypedJSON` `undefined` for unparsable JSON", function () {
-                assert.throws(() => { TypedJSON.parse("nope"); });
+                assert.isTrue(TypedJSON.parse("nope").isUndefined);
             });
 
         });

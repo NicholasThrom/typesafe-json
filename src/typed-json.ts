@@ -28,7 +28,11 @@ export class TypedJSON {
      * @param json The JSON `string` to parse.
      */
     public static parse(json: string) {
-        return new TypedJSON(JSON.parse(json));
+        try {
+            return new TypedJSON(JSON.parse(json));
+        } catch {
+            return new TypedJSON(undefined);
+        }
     }
 
     /**
@@ -205,7 +209,11 @@ export class TypedJSON {
      * or undefined, if it is not a valid JSON object.
      */
     public stringify() {
-        return JSON.stringify(this.value);
+        try {
+            return JSON.stringify(this.value);
+        } catch {
+            return undefined;
+        }
     }
 
 }
