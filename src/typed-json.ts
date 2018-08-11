@@ -17,12 +17,19 @@
 export class TypedJSON {
 
     /**
-     * The raw JS object underlying this value.
+     * Parses the passed `json` to produce a TypedJSON object.
      *
-     * Prefer to access it through other methods,
-     * unless you have some reason to access it directly.
+     * If the `json` is not valid JSON,
+     * returns a TypedJSON object containing `undefined`.
+     *
+     * For example
+     * ``TypedJSON.parse(`{ "a": [{ "b": "c" }] }`).get("a", 0, "b").string === "c";``
+     *
+     * @param json The JSON `string` to parse.
      */
-    public readonly value: any;
+    public static parse(json: string) {
+        return new TypedJSON(JSON.parse(json));
+    }
 
     /**
      * Constructs a new TypedJSON object with the specified `value`.
@@ -33,6 +40,14 @@ export class TypedJSON {
     public constructor(value: any) {
         this.value = value;
     }
+
+    /**
+     * The raw JS object underlying this value.
+     *
+     * Prefer to access it through other methods,
+     * unless you have some reason to access it directly.
+     */
+    public readonly value: any;
 
     /**
      * `true` if this TypedJSON object represents a `string`.
@@ -193,22 +208,4 @@ export class TypedJSON {
         return JSON.stringify(this.value);
     }
 
-    /**
-     * Parses the passed `json` to produce a TypedJSON object.
-     *
-     * If the `json` is not valid JSON,
-     * returns a TypedJSON object containing `undefined`.
-     *
-     * For example
-     * ``TypedJSON.parse(`{ "a": [{ "b": "c" }] }`).get("a", 0, "b").string === "c";``
-     *
-     * @param json The JSON `string` to parse.
-     */
-    public static parse(json: string) {
-        try {
-            return new TypedJSON(JSON.parse(json));
-        } catch {
-            return new TypedJSON(undefined);
-        }
-    }
 }
