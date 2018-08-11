@@ -110,6 +110,9 @@ export class TypedJSON {
 
     /**
      * `true` if this TypedJSON object is `undefined`.
+     *
+     * There is no `.undefined`
+     * since there is only one possible `undefined` value.
      */
     public get isUndefined() {
         return this.value === undefined;
