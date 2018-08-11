@@ -6,6 +6,7 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "tsc",
+        "coverage": "nyc npm run mocha -s",
         "lint": "tslint --project ./tsconfig.json",
         "mocha": "mocha",
         "test": "npm run typecheck -s && npm run lint -s && npm run mocha -s",
@@ -32,7 +33,9 @@
         "@types/mocha": "^5.2.5",
         "@types/sinon": "^5.0.1",
         "chai": "^4.1.2",
+        "istanbul": "^0.4.5",
         "mocha": "^5.2.0",
+        "nyc": "^12.0.2",
         "sinon": "^5.0.1",
         "ts-node": "^7.0.0",
         "tslint": "^5.11.0",
