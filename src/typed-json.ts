@@ -192,7 +192,7 @@ export class TypedJSON {
         if (typeof key === "string") {
             const object = this.object;
             if (object) { return new TypedJSON(object[key]); }
-        } else if (typeof key === "number") {
+        } else {
             const array = this.array;
             if (array) { return new TypedJSON(array[key]); }
         }
