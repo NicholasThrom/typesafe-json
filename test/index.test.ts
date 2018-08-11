@@ -2,7 +2,7 @@ import { assert } from "chai";
 import "mocha";
 import sinon = require("sinon");
 
-import { HelloWorld } from "../src/index";
+import { TypedJSON } from "../src/index";
 
 describe("index.ts", function () {
 
@@ -10,8 +10,12 @@ describe("index.ts", function () {
         sinon.restore();
     });
 
-    it("should exist", function () {
-        assert.exists(HelloWorld);
+    describe("TypedJSON", function () {
+
+        it("should be exported in index.ts", function () {
+            assert.exists(TypedJSON);
+        });
+
     });
 
 });
