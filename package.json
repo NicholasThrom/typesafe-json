@@ -9,6 +9,8 @@
         "coverage": "nyc npm run mocha -s",
         "lint": "tslint --project ./tsconfig.json",
         "mocha": "mocha",
+        "prepack": "npm run build -s",
+        "prepublishOnly": "npm run test -s",
         "test": "npm run typecheck -s && npm run lint -s && npm run mocha -s",
         "typecheck": "tsc --noEmit"
     },
