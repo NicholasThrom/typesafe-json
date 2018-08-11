@@ -155,7 +155,7 @@ export class TypedJSON {
      * Gets the TypedJSON object under the specified chain of keys,
      * or the undefined TypedJSON object if it is not available.
      *
-     * See `.getSingle` for
+     * See `._getSingle` for
      *
      * For example,
      * ```ts
@@ -166,7 +166,7 @@ export class TypedJSON {
     public get(...keys: (string | number)[]) {
         let current: TypedJSON = this;
         for (const key of keys) {
-            current = current.getSingle(key);
+            current = current._getSingle(key);
             if (current.isUndefined) { break; }
         }
         return current;
@@ -180,8 +180,8 @@ export class TypedJSON {
      *
      * For example,
      * ```ts
-     * TypedJSON.parse("[0, 1, 2]").getSingle(1) === 1;
-     * TypedJSON.parse(`{ a: "a", b: "b" }`).getSingle("a").string === "a";
+     * TypedJSON.parse("[0, 1, 2]")._getSingle(1) === 1;
+     * TypedJSON.parse(`{ a: "a", b: "b" }`)._getSingle("a").string === "a";
      * ```
      *
      * Only `string` keys can be used if this TypedJSON object `.isObject`,
@@ -192,7 +192,7 @@ export class TypedJSON {
      *
      * @param key The key of the value to return.
      */
-    public getSingle(key: string | number) {
+    private _getSingle(key: string | number) {
         if (typeof key === "string") {
             const object = this.object;
             if (object) { return new TypedJSON(object[key]); }
