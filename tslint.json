@@ -13,29 +13,9 @@
         "indent": [true, "spaces", 4],
         "interface-name": [true, "never-prefix"],
         "max-classes-per-file": false,
+        "max-line-length": false,
         "member-access": [true, "check-accessor", "check-constructor", "check-parameter-property"],
-        "member-ordering": [
-            true,
-            {
-                "order": [
-                    "private-instance-field",
-                    "protected-instance-field",
-                    "public-instance-field",
-                    "private-constructor",
-                    "protected-constructor",
-                    "public-constructor",
-                    "private-instance-method",
-                    "protected-instance-method",
-                    "public-instance-method",
-                    "private-static-field",
-                    "protected-static-field",
-                    "public-static-field",
-                    "private-static-method",
-                    "protected-static-method",
-                    "public-static-method"
-                ]
-            }
-        ],
+        "member-ordering": false,
         "no-consecutive-blank-lines": true,
         "no-console": false,
         "no-default-export": true,
@@ -46,7 +26,7 @@
         "no-internal-module": true,
         "object-literal-key-quotes": [true, "as-needed"],
         "only-arrow-functions": false,
-        "quotemark": [true, "double", "avoid-template"],
+        "quotemark": [true, "double", "avoid-escape"],
         "semicolon": [true, "always"],
         "space-before-function-paren": [
             true, {
