@@ -1,6 +1,7 @@
 # Changelog
 
 ## next
-\+ Set up repo.
-\+ Add package.json, tsconfig, tslint, tsc, etc.
+\+ Add TypedJSON class.
 \+ Add changelog.
+\+ Add package.json, tsconfig, tslint, tsc, etc.
+\+ Set up repo.
