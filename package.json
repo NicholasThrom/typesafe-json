@@ -14,7 +14,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/NicholasThrom/ts-typesafe-json.git"
+        "url": "git+https://github.com/NicholasThrom/typesafe-json.git"
     },
     "keywords": [
         "typescript",
@@ -25,9 +25,9 @@
     "author": "Nicholas Throm",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/NicholasThrom/ts-typesafe-json/issues"
+        "url": "https://github.com/NicholasThrom/typesafe-json/issues"
     },
-    "homepage": "https://github.com/NicholasThrom/ts-typesafe-json#readme",
+    "homepage": "https://github.com/NicholasThrom/typesafe-json#readme",
     "devDependencies": {
         "@types/chai": "^4.1.4",
         "@types/mocha": "^5.2.5",
