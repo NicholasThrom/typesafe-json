@@ -1,6 +1,6 @@
 # typesafe-json
 
-An easy way to handle JSON in a type safe way.
+An easy, typesafe way to handle JSON.
 
 Accessing JSON in TypeScript (or safely in JavaScript) is a nuisance.
 You need to check for undefined every step of the way
@@ -77,3 +77,9 @@ invalidJSON.stringify() // undefined
 // .value is the underlying value of the TypedJSON object,
 // and usually should not be used.
 ```
+
+## Links
+
+[Repository](https://github.com/NicholasThrom/typesafe-json)<br/>
+[Issues](https://github.com/NicholasThrom/typesafe-json/issues)<br/>
+[Changelog](https://github.com/NicholasThrom/typesafe-json/blob/master/CHANGELOG.md)
