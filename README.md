@@ -26,7 +26,7 @@ if (e === undefined) {
 
 ## Installation
 
-Run `npm i typesafe-json`.
+Run `npm i typesafe-json` in your project.
 
 ## Use
 
