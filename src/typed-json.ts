@@ -153,14 +153,19 @@ export class TypedJSON {
 
     /**
      * Gets the TypedJSON object under the specified chain of keys,
-     * or the undefined TypedJSON object if it is not available.
-     *
-     * See `._getSingle` for
+     * or a TypedJSON object containing `undefined` if it is not available.
      *
      * For example,
      * ```ts
      * new TypedJSON({ a: [{ b: "c" }] }).get("a", 0, "b").string === "c";
      * ```
+     *
+     * Only `string` keys can be used on TypedJSON objects with `.isObject`,
+     * and only `number` keys can be used on TypedJSON objects with `.isArray`.
+     *
+     * Note that `({ 1: 1 })["1"] === 1`,
+     * so number-keyed objects can still be accessed via strings.
+     *
      * @param keys The chain of keys to the value to return.
      */
     public get(...keys: (string | number)[]) {
