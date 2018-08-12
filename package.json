@@ -1,6 +1,6 @@
 {
     "name": "typesafe-json",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "An easy way to safely parse JSON in TypeScript.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
