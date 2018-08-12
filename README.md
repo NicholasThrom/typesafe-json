@@ -4,9 +4,9 @@ An easy, typesafe way to handle JSON.
 
 Accessing JSON in TypeScript (or safely in JavaScript) is a nuisance.
 You need to check for undefined every step of the way
-and assert the type is correct before you can use it.
-This module is designed to reduce that boilerplate
-and to make it more concise, readable, and reliable.
+and check the type is correct before you can use it.
+This module is designed to reduce that boilerplate,
+making it more concise, readable, and reliable.
 
 ## Example
 
@@ -33,12 +33,12 @@ Run `npm i typesafe-json` in your project.
 ```ts
 // Importing in TypeScript
 import { TypedJSON } from "typesafe-json";
-// or in javascript
+// or in JavaScript
 const TypedJSON = require("typesafe-json").TypedJSON;
 
 // A TypedJSON object can be parsed from JSON,
 const typedJSON1 = TypedJSON.parse(`{"a":[0,{"b":["c","d"]}]}`);
-// or from any javascript value.
+// or from any JavaScript value.
 const typedJSON2 = new TypedJSON({a:[0,{b:["c","d"]}]});
 const typedJSON3 = new TypedJSON(12);
 
@@ -78,8 +78,10 @@ invalidJSON.stringify() // undefined
 // and usually should not be used.
 ```
 
+More detailed documentation can be found in documentation comments.
+
 ## Links
 
 [Repository](https://github.com/NicholasThrom/typesafe-json)<br/>
 [Issues](https://github.com/NicholasThrom/typesafe-json/issues)<br/>
-[Changelog](https://github.com/NicholasThrom/typesafe-json/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/NicholasThrom/typesafe-json/blob/master/CHANGELOG.md)<br/>
