@@ -19,7 +19,7 @@ export class TypedJSON {
     /**
      * Parses the passed `json` to produce a TypedJSON object.
      *
-     * If the `json` is not valid JSON,
+     * If `json` is not valid JSON,
      * returns a TypedJSON object containing `undefined`.
      *
      * For example
@@ -119,36 +119,36 @@ export class TypedJSON {
     }
 
     /**
-     * `true` if this TypedJSON object is a `JSONArray`.
+     * `true` if this TypedJSON object is a array.
      */
     public get isArray() {
         return Array.isArray(this.value);
     }
 
     /**
-     * The value of this TypedJSON object as a `JSONArray`,
-     * or `undefined` if it is not a `JSONArray`.
+     * The value of this TypedJSON object as an array,
+     * or `undefined` if it is not an array.
      *
      * Prefer using `.get` for access,
-     * instead of accessing the `array` directly.
+     * instead of using the array directly.
      */
     public get array() {
         if (this.isArray) { return this.value as any[]; }
     }
 
     /**
-     * `true` if this TypedJSON object is a `JSONObject`.
+     * `true` if this TypedJSON object is an object.
      */
     public get isObject() {
         return !this.isArray && !this.isNull && typeof this.value === "object";
     }
 
     /**
-     * The value of this TypedJSON object as a `JSONObject`,
-     * or `undefined` if it is not a `JSONObject`.
+     * The value of this TypedJSON object as an object,
+     * or `undefined` if it is not an object.
      *
      * Prefer using `.get` for access,
-     * instead of accessing the `JSONObjects` directly.
+     * instead of using the object directly.
      */
     public get object() {
         if (this.isObject) { return this.value as { [key: string]: any }; }
@@ -213,7 +213,7 @@ export class TypedJSON {
     }
 
     /**
-     * Returns a JSON `string` representing this TypedJSON object,
+     * Returns a JSON string representing this TypedJSON object,
      * or undefined, if it is not a valid JSON object.
      */
     public stringify() {
