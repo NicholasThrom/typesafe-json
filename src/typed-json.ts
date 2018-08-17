@@ -235,3 +235,13 @@ export class TypedJSON {
     }
 
 }
+
+export {
+    ArrayJSON,
+    BooleanJSON,
+    NullJSON,
+    NumberJSON,
+    ObjectJSON,
+    StringJSON,
+    UndefinedJSON,
+} from "./typed-json-interfaces";
