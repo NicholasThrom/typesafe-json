@@ -50,16 +50,16 @@ describe("typed-json.ts", function () {
         describe(".isString", function () {
 
             it("should be true only if `.value` is a `string`", function () {
-                assert.isTrue(new TypedJSON("any string").isString);
-                assert.isFalse(new TypedJSON(9000).isString);
-                assert.isFalse(new TypedJSON(NaN).isString);
-                assert.isFalse(new TypedJSON(0).isString);
-                assert.isFalse(new TypedJSON(true).isString);
-                assert.isFalse(new TypedJSON(false).isString);
-                assert.isFalse(new TypedJSON(null).isString);
-                assert.isFalse(new TypedJSON(undefined).isString);
-                assert.isFalse(new TypedJSON({ string: "stringy" }).isString);
-                assert.isFalse(new TypedJSON(["string"]).isString);
+                assert.isTrue(new TypedJSON("any string").isString());
+                assert.isFalse(new TypedJSON(9000).isString());
+                assert.isFalse(new TypedJSON(NaN).isString());
+                assert.isFalse(new TypedJSON(0).isString());
+                assert.isFalse(new TypedJSON(true).isString());
+                assert.isFalse(new TypedJSON(false).isString());
+                assert.isFalse(new TypedJSON(null).isString());
+                assert.isFalse(new TypedJSON(undefined).isString());
+                assert.isFalse(new TypedJSON({ string: "stringy" }).isString());
+                assert.isFalse(new TypedJSON(["string"]).isString());
             });
 
         });
@@ -71,7 +71,7 @@ describe("typed-json.ts", function () {
                 assert.strictEqual(new TypedJSON(anyString).string, anyString);
             });
 
-            it("should be `.undefined` if it is not a `string`", function () {
+            it("should be `undefined` if it is not a `string`", function () {
                 assert.isUndefined(new TypedJSON({}).string);
             });
 
@@ -80,17 +80,17 @@ describe("typed-json.ts", function () {
         describe(".isNumber", function () {
 
             it("should be true only if `.value` is a `number`", function () {
-                assert.isFalse(new TypedJSON("number").isNumber);
-                assert.isFalse(new TypedJSON("9000").isNumber);
-                assert.isTrue(new TypedJSON(9000).isNumber);
-                assert.isTrue(new TypedJSON(NaN).isNumber);
-                assert.isTrue(new TypedJSON(0).isNumber);
-                assert.isFalse(new TypedJSON(true).isNumber);
-                assert.isFalse(new TypedJSON(false).isNumber);
-                assert.isFalse(new TypedJSON(null).isNumber);
-                assert.isFalse(new TypedJSON(undefined).isNumber);
-                assert.isFalse(new TypedJSON({ number: 9000 }).isNumber);
-                assert.isFalse(new TypedJSON([9000]).isNumber);
+                assert.isFalse(new TypedJSON("number").isNumber());
+                assert.isFalse(new TypedJSON("9000").isNumber());
+                assert.isTrue(new TypedJSON(9000).isNumber());
+                assert.isTrue(new TypedJSON(NaN).isNumber());
+                assert.isTrue(new TypedJSON(0).isNumber());
+                assert.isFalse(new TypedJSON(true).isNumber());
+                assert.isFalse(new TypedJSON(false).isNumber());
+                assert.isFalse(new TypedJSON(null).isNumber());
+                assert.isFalse(new TypedJSON(undefined).isNumber());
+                assert.isFalse(new TypedJSON({ number: 9000 }).isNumber());
+                assert.isFalse(new TypedJSON([9000]).isNumber());
             });
 
         });
@@ -111,16 +111,16 @@ describe("typed-json.ts", function () {
         describe(".isBoolean", function () {
 
             it("should be true only if `.value` is a `number`", function () {
-                assert.isFalse(new TypedJSON("number").isBoolean);
-                assert.isFalse(new TypedJSON(9000).isBoolean);
-                assert.isFalse(new TypedJSON(NaN).isBoolean);
-                assert.isFalse(new TypedJSON(0).isBoolean);
-                assert.isTrue(new TypedJSON(true).isBoolean);
-                assert.isTrue(new TypedJSON(false).isBoolean);
-                assert.isFalse(new TypedJSON(null).isBoolean);
-                assert.isFalse(new TypedJSON(undefined).isBoolean);
-                assert.isFalse(new TypedJSON({ boolean: true }).isBoolean);
-                assert.isFalse(new TypedJSON([true]).isBoolean);
+                assert.isFalse(new TypedJSON("number").isBoolean());
+                assert.isFalse(new TypedJSON(9000).isBoolean());
+                assert.isFalse(new TypedJSON(NaN).isBoolean());
+                assert.isFalse(new TypedJSON(0).isBoolean());
+                assert.isTrue(new TypedJSON(true).isBoolean());
+                assert.isTrue(new TypedJSON(false).isBoolean());
+                assert.isFalse(new TypedJSON(null).isBoolean());
+                assert.isFalse(new TypedJSON(undefined).isBoolean());
+                assert.isFalse(new TypedJSON({ boolean: true }).isBoolean());
+                assert.isFalse(new TypedJSON([true]).isBoolean());
             });
 
         });
@@ -141,54 +141,54 @@ describe("typed-json.ts", function () {
         describe(".isNull", function () {
 
             it("should be true only if `.value` is `null`", function () {
-                assert.isFalse(new TypedJSON("null").isNull);
-                assert.isFalse(new TypedJSON(9000).isNull);
-                assert.isFalse(new TypedJSON(NaN).isNull);
-                assert.isFalse(new TypedJSON(0).isNull);
-                assert.isFalse(new TypedJSON(true).isNull);
-                assert.isFalse(new TypedJSON(false).isNull);
-                assert.isTrue(new TypedJSON(null).isNull);
-                assert.isFalse(new TypedJSON(undefined).isNull);
-                assert.isFalse(new TypedJSON({}).isNull);
-                assert.isFalse(new TypedJSON([null]).isNull);
-                assert.isFalse(new TypedJSON([]).isNull);
+                assert.isFalse(new TypedJSON("null").isNull());
+                assert.isFalse(new TypedJSON(9000).isNull());
+                assert.isFalse(new TypedJSON(NaN).isNull());
+                assert.isFalse(new TypedJSON(0).isNull());
+                assert.isFalse(new TypedJSON(true).isNull());
+                assert.isFalse(new TypedJSON(false).isNull());
+                assert.isTrue(new TypedJSON(null).isNull());
+                assert.isFalse(new TypedJSON(undefined).isNull());
+                assert.isFalse(new TypedJSON({}).isNull());
+                assert.isFalse(new TypedJSON([null]).isNull());
+                assert.isFalse(new TypedJSON([]).isNull());
             });
 
         });
 
         describe(".isUndefined", function () {
 
-            it("should be true only if `.value` is `null`", function () {
-                assert.isFalse(new TypedJSON("undefined").isUndefined);
-                assert.isFalse(new TypedJSON(9000).isUndefined);
-                assert.isFalse(new TypedJSON(NaN).isUndefined);
-                assert.isFalse(new TypedJSON(0).isUndefined);
-                assert.isFalse(new TypedJSON(true).isUndefined);
-                assert.isFalse(new TypedJSON(false).isUndefined);
-                assert.isFalse(new TypedJSON(null).isUndefined);
-                assert.isTrue(new TypedJSON(undefined).isUndefined);
-                assert.isFalse(new TypedJSON({}).isUndefined);
-                assert.isFalse(new TypedJSON([undefined]).isUndefined);
-                assert.isFalse(new TypedJSON([]).isUndefined);
+            it("should be true only if `.value` is `undefined`", function () {
+                assert.isFalse(new TypedJSON("undefined").isUndefined());
+                assert.isFalse(new TypedJSON(9000).isUndefined());
+                assert.isFalse(new TypedJSON(NaN).isUndefined());
+                assert.isFalse(new TypedJSON(0).isUndefined());
+                assert.isFalse(new TypedJSON(true).isUndefined());
+                assert.isFalse(new TypedJSON(false).isUndefined());
+                assert.isFalse(new TypedJSON(null).isUndefined());
+                assert.isTrue(new TypedJSON(undefined).isUndefined());
+                assert.isFalse(new TypedJSON({}).isUndefined());
+                assert.isFalse(new TypedJSON([undefined]).isUndefined());
+                assert.isFalse(new TypedJSON([]).isUndefined());
             });
 
         });
 
         describe(".isObject", function () {
 
-            it("should be true only if `.value` is `null`", function () {
-                assert.isFalse(new TypedJSON("[object Object]").isObject);
-                assert.isFalse(new TypedJSON(9000).isObject);
-                assert.isFalse(new TypedJSON(NaN).isObject);
-                assert.isFalse(new TypedJSON(0).isObject);
-                assert.isFalse(new TypedJSON(true).isObject);
-                assert.isFalse(new TypedJSON(false).isObject);
-                assert.isFalse(new TypedJSON(null).isObject);
-                assert.isFalse(new TypedJSON(undefined).isObject);
-                assert.isFalse(new TypedJSON([{}, {}]).isObject);
-                assert.isFalse(new TypedJSON([]).isObject);
-                assert.isTrue(new TypedJSON({}).isObject);
-                assert.isTrue(new TypedJSON({ 0: 0, 1: 1, 2: 2, length: 3 }).isObject);
+            it("should be true only if `.value` is an object", function () {
+                assert.isFalse(new TypedJSON("[object Object]").isObject());
+                assert.isFalse(new TypedJSON(9000).isObject());
+                assert.isFalse(new TypedJSON(NaN).isObject());
+                assert.isFalse(new TypedJSON(0).isObject());
+                assert.isFalse(new TypedJSON(true).isObject());
+                assert.isFalse(new TypedJSON(false).isObject());
+                assert.isFalse(new TypedJSON(null).isObject());
+                assert.isFalse(new TypedJSON(undefined).isObject());
+                assert.isFalse(new TypedJSON([{}, {}]).isObject());
+                assert.isFalse(new TypedJSON([]).isObject());
+                assert.isTrue(new TypedJSON({}).isObject());
+                assert.isTrue(new TypedJSON({ 0: 0, 1: 1, 2: 2, length: 3 }).isObject());
             });
 
         });
@@ -208,19 +208,19 @@ describe("typed-json.ts", function () {
 
         describe(".isArray", function () {
 
-            it("should be true only if `.value` is `null`", function () {
-                assert.isFalse(new TypedJSON("[]").isArray);
-                assert.isFalse(new TypedJSON(9000).isArray);
-                assert.isFalse(new TypedJSON(NaN).isArray);
-                assert.isFalse(new TypedJSON(0).isArray);
-                assert.isFalse(new TypedJSON(true).isArray);
-                assert.isFalse(new TypedJSON(false).isArray);
-                assert.isFalse(new TypedJSON(null).isArray);
-                assert.isFalse(new TypedJSON(undefined).isArray);
-                assert.isTrue(new TypedJSON([{}, []]).isArray);
-                assert.isTrue(new TypedJSON([]).isArray);
-                assert.isFalse(new TypedJSON({}).isArray);
-                assert.isFalse(new TypedJSON({ 0: 0, 1: 1, 2: 2, length: 3 }).isArray);
+            it("should be true only if `.value` is an array", function () {
+                assert.isFalse(new TypedJSON("[]").isArray());
+                assert.isFalse(new TypedJSON(9000).isArray());
+                assert.isFalse(new TypedJSON(NaN).isArray());
+                assert.isFalse(new TypedJSON(0).isArray());
+                assert.isFalse(new TypedJSON(true).isArray());
+                assert.isFalse(new TypedJSON(false).isArray());
+                assert.isFalse(new TypedJSON(null).isArray());
+                assert.isFalse(new TypedJSON(undefined).isArray());
+                assert.isTrue(new TypedJSON([{}, []]).isArray());
+                assert.isTrue(new TypedJSON([]).isArray());
+                assert.isFalse(new TypedJSON({}).isArray());
+                assert.isFalse(new TypedJSON({ 0: 0, 1: 1, 2: 2, length: 3 }).isArray());
             });
 
         });
@@ -285,31 +285,31 @@ describe("typed-json.ts", function () {
             });
 
             it("should return an undefined `TypedJSON` for a single `number` argument", function () {
-                assert.isTrue(jsonArray.get(3).isUndefined);
+                assert.isTrue(jsonArray.get(3).isUndefined());
             });
 
             it("should return an undefined `TypedJSON` for a single `string` argument", function () {
-                assert.isTrue(jsonObject.get("b").isUndefined);
+                assert.isTrue(jsonObject.get("b").isUndefined());
             });
 
             it("should return an undefined `TypedJSON` for a single `number` argument on an object", function () {
-                assert.isTrue(jsonObject.get(0).isUndefined);
+                assert.isTrue(jsonObject.get(0).isUndefined());
             });
 
             it("should return an undefined `TypedJSON` for a single number `string` argument", function () {
-                assert.isTrue(jsonArray.get("1").isUndefined);
+                assert.isTrue(jsonArray.get("1").isUndefined());
             });
 
             it("should return an undefined `TypedJSON` for multiple arguments where the last does not exist", function () {
-                assert.isTrue(jsonArray.get("array", 1, "b").isUndefined);
+                assert.isTrue(jsonArray.get("array", 1, "b").isUndefined());
             });
 
             it("should return an undefined `TypedJSON` for multiple arguments where the last goes too far", function () {
-                assert.isTrue(jsonArray.get("array", 1, "a", 3).isUndefined);
+                assert.isTrue(jsonArray.get("array", 1, "a", 3).isUndefined());
             });
 
             it("should return an undefined `TypedJSON` for multiple arguments where the first does not exist", function () {
-                assert.isTrue(jsonArray.get("d", 1, "a", 3).isUndefined);
+                assert.isTrue(jsonArray.get("d", 1, "a", 3).isUndefined());
             });
 
         });
@@ -358,7 +358,7 @@ describe("typed-json.ts", function () {
             });
 
             it("should return a `TypedJSON` `null`", function () {
-                assert.isTrue(TypedJSON.parse("null").isNull);
+                assert.isTrue(TypedJSON.parse("null").isNull());
             });
 
             it("should return a `TypedJSON` `array`", function () {
@@ -370,7 +370,7 @@ describe("typed-json.ts", function () {
             });
 
             it("should return a `TypedJSON` `undefined` for unparsable JSON", function () {
-                assert.isTrue(TypedJSON.parse("nope").isUndefined);
+                assert.isTrue(TypedJSON.parse("nope").isUndefined());
             });
 
         });

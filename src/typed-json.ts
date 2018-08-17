@@ -1,3 +1,13 @@
+import {
+    ArrayJSON,
+    BooleanJSON,
+    NullJSON,
+    NumberJSON,
+    ObjectJSON,
+    StringJSON,
+    UndefinedJSON,
+} from "./typed-json-interfaces";
+
 /**
  * A type-safe representation of JSON data.
  *
@@ -56,7 +66,7 @@ export class TypedJSON {
     /**
      * `true` if this TypedJSON object represents a `string`.
      */
-    public get isString() {
+    public isString(): this is StringJSON {
         return typeof this.value === "string";
     }
 
@@ -65,13 +75,13 @@ export class TypedJSON {
      * or `undefined` if it is not a `string`.
      */
     public get string() {
-        if (this.isString) { return this.value as string; }
+        if (this.isString()) { return this.value as string; }
     }
 
     /**
      * `true` if this TypedJSON object represents a `number`.
      */
-    public get isNumber() {
+    public isNumber(): this is NumberJSON {
         return typeof this.value === "number";
     }
 
@@ -80,13 +90,13 @@ export class TypedJSON {
      * or `undefined` if it is not a `number`.
      */
     public get number() {
-        if (this.isNumber) { return this.value as number; }
+        if (this.isNumber()) { return this.value as number; }
     }
 
     /**
      * `true` if this TypedJSON object represents a `boolean`.
      */
-    public get isBoolean() {
+    public isBoolean(): this is BooleanJSON {
         return typeof this.value === "boolean";
     }
 
@@ -95,7 +105,7 @@ export class TypedJSON {
      * or `undefined` if it is not a `boolean`.
      */
     public get boolean() {
-        if (this.isBoolean) { return this.value as boolean; }
+        if (this.isBoolean()) { return this.value as boolean; }
     }
 
     /**
@@ -104,7 +114,7 @@ export class TypedJSON {
      * There is no `.null`
      * since there is only one possible `null` value.
      */
-    public get isNull() {
+    public isNull(): this is NullJSON {
         return this.value === null;
     }
 
@@ -114,14 +124,14 @@ export class TypedJSON {
      * There is no `.undefined`
      * since there is only one possible `undefined` value.
      */
-    public get isUndefined() {
+    public isUndefined(): this is UndefinedJSON {
         return this.value === undefined;
     }
 
     /**
      * `true` if this TypedJSON object is a array.
      */
-    public get isArray() {
+    public isArray(): this is ArrayJSON {
         return Array.isArray(this.value);
     }
 
@@ -133,14 +143,14 @@ export class TypedJSON {
      * instead of using the array directly.
      */
     public get array() {
-        if (this.isArray) { return this.value as any[]; }
+        if (this.isArray()) { return this.value as any[]; }
     }
 
     /**
      * `true` if this TypedJSON object is an object.
      */
-    public get isObject() {
-        return !this.isArray && !this.isNull && typeof this.value === "object";
+    public isObject(): this is ObjectJSON {
+        return !this.isArray() && !this.isNull() && typeof this.value === "object";
     }
 
     /**
@@ -151,7 +161,7 @@ export class TypedJSON {
      * instead of using the object directly.
      */
     public get object() {
-        if (this.isObject) { return this.value as { [key: string]: any }; }
+        if (this.isObject()) { return this.value as { [key: string]: any }; }
     }
 
     /**
@@ -171,11 +181,11 @@ export class TypedJSON {
      *
      * @param keys The chain of keys to the value to return.
      */
-    public get(...keys: (string | number)[]) {
+    public get(...keys: (string | number)[]): TypedJSON {
         let current: TypedJSON = this;
         for (const key of keys) {
             current = current._getSingle(key);
-            if (current.isUndefined) { break; }
+            if (current.isUndefined()) { break; }
         }
         return current;
     }
