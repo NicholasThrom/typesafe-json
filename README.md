@@ -85,3 +85,4 @@ More detailed documentation can be found in documentation comments.
 [Repository](https://github.com/NicholasThrom/typesafe-json)<br/>
 [Issues](https://github.com/NicholasThrom/typesafe-json/issues)<br/>
 [Changelog](https://github.com/NicholasThrom/typesafe-json/blob/master/CHANGELOG.md)<br/>
+[npm](https://www.npmjs.com/package/typesafe-json)<br/>
