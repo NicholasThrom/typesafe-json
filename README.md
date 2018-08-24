@@ -56,19 +56,20 @@ const boolean = typedJSON5.boolean; // undefined
 // Instead, use .get().
 
 // Checks exists to check the type without getting the value:
-const isNumber = typedJSON5.isNumber // false
-const isString = typedJSON5.isString // true
-const isBoolean = typedJSON5.isBoolean // false
-const isArray = typedJSON5.isArray // false
-const isObject = typedJSON5.isObject // false
-const isNull = typedJSON5.isNull // false
-const isUndefined = typedJSON5.isUndefined // false
+const isNumber = typedJSON5.isNumber() // false
+const isString = typedJSON5.isString() // true
+const isBoolean = typedJSON5.isBoolean() // false
+const isArray = typedJSON5.isArray() // false
+const isObject = typedJSON5.isObject() // false
+const isNull = typedJSON5.isNull() // false
+const isUndefined = typedJSON5.isUndefined() // false
+// The type system is able to use the type information these return.
 
 // Invalid operations return either `undefined`
 // or a TypedJSON containing `undefined.
 const invalidJSON = TypedJSON.parse("invalid json");
-invalidJSON.isUndefined // true
-invalidJSON.get("a", 1, "b", 2).isUndefined // true
+invalidJSON.isUndefined() // true
+invalidJSON.get("a", 1, "b", 2).isUndefined() // true
 invalidJSON.number // undefined
 invalidJSON.stringify() // undefined
 
