@@ -65,7 +65,7 @@ const isNull = typedJSON5.isNull // false
 const isUndefined = typedJSON5.isUndefined // false
 
 // Invalid operations return either `undefined`
-// or a TypedJSON containing `undefined.
+// or a TypedJSON containing `undefined`.
 const invalidJSON = TypedJSON.parse("invalid json");
 invalidJSON.isUndefined // true
 invalidJSON.get("a", 1, "b", 2).isUndefined // true
