@@ -1,7 +1,7 @@
 # Changelog
 
 ## next
-\+ Add type information to `.is` checks.
+\+ Add type information to `.is` checks.<br/>
 
 ### Breaking changes
 
