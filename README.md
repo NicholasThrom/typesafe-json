@@ -66,7 +66,7 @@ const isUndefined = typedJSON5.isUndefined() // false
 // The type system is able to use the type information these return.
 
 // Invalid operations return either `undefined`
-// or a TypedJSON containing `undefined.
+// or a TypedJSON containing `undefined`.
 const invalidJSON = TypedJSON.parse("invalid json");
 invalidJSON.isUndefined() // true
 invalidJSON.get("a", 1, "b", 2).isUndefined() // true
