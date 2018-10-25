@@ -1,5 +1,11 @@
 import { TypedJSON } from "./typed-json";
 
+// After a `.is` function returns true,
+// more specific descriptions of the types of a TypedJSON can be provided.
+// These interfaces are for the various `.is` functions.
+// Note they do not have documentation comments,
+// to avoid overriding the TypedJSON documentation comments.
+
 export interface StringJSON extends TypedJSON {
     readonly value: string;
     isString(): true;
