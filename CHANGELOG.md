@@ -2,6 +2,7 @@
 
 ## next
 \+ Add type information to `.is` checks.<br/>
+\* Improve documentation.<br/>
 
 ### Breaking changes
 
