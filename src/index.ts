@@ -1,1 +1,1 @@
-export { TypedJSON } from "./typed-json";
+export * from "./typed-json";
