@@ -5,7 +5,8 @@ An easy, typesafe way to handle JSON.
 Accessing JSON in TypeScript (or safely in JavaScript) is a nuisance.
 You need to check for undefined every step of the way
 and check the type is correct before you can use it.
-This module is designed to reduce that boilerplate,
+
+This package is designed to reduce that boilerplate,
 making it more concise, readable, and reliable.
 
 ## Example
