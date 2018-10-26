@@ -74,7 +74,7 @@ export class TypedJSON {
      * The value of this TypedJSON object as a `string`,
      * or `undefined` if it is not a `string`.
      */
-    public get string() {
+    public string() {
         if (this.isString()) { return this.value as string; }
     }
 
@@ -89,7 +89,7 @@ export class TypedJSON {
      * The value of this TypedJSON object as a `number`,
      * or `undefined` if it is not a `number`.
      */
-    public get number() {
+    public number() {
         if (this.isNumber()) { return this.value as number; }
     }
 
@@ -104,7 +104,7 @@ export class TypedJSON {
      * The value of this TypedJSON object as a `boolean`,
      * or `undefined` if it is not a `boolean`.
      */
-    public get boolean() {
+    public boolean() {
         if (this.isBoolean()) { return this.value as boolean; }
     }
 
@@ -142,7 +142,7 @@ export class TypedJSON {
      * Prefer using `.get` for access,
      * instead of using the array directly.
      */
-    public get array() {
+    public array() {
         if (this.isArray()) { return this.value as any[]; }
     }
 
@@ -160,7 +160,7 @@ export class TypedJSON {
      * Prefer using `.get` for access,
      * instead of using the object directly.
      */
-    public get object() {
+    public object() {
         if (this.isObject()) { return this.value as { [key: string]: any }; }
     }
 
@@ -212,10 +212,10 @@ export class TypedJSON {
      */
     private _getSingle(key: string | number) {
         if (typeof key === "string") {
-            const object = this.object;
+            const object = this.object();
             if (object) { return new TypedJSON(object[key]); }
         } else {
-            const array = this.array;
+            const array = this.array();
             if (array) { return new TypedJSON(array[key]); }
         }
 

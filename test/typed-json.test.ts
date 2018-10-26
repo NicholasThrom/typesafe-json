@@ -68,11 +68,11 @@ describe("typed-json.ts", function () {
 
             it("should be `.value` if it is a `string`", function () {
                 const anyString = "any string";
-                assert.strictEqual(new TypedJSON(anyString).string, anyString);
+                assert.strictEqual(new TypedJSON(anyString).string(), anyString);
             });
 
             it("should be `undefined` if it is not a `string`", function () {
-                assert.isUndefined(new TypedJSON({}).string);
+                assert.isUndefined(new TypedJSON({}).string());
             });
 
         });
@@ -99,11 +99,11 @@ describe("typed-json.ts", function () {
 
             it("should be `.value` if it is a `number`", function () {
                 const anyNumber = 9000;
-                assert.strictEqual(new TypedJSON(anyNumber).number, anyNumber);
+                assert.strictEqual(new TypedJSON(anyNumber).number(), anyNumber);
             });
 
             it("should be `.undefined` if it is not a `string`", function () {
-                assert.isUndefined(new TypedJSON({}).number);
+                assert.isUndefined(new TypedJSON({}).number());
             });
 
         });
@@ -129,11 +129,11 @@ describe("typed-json.ts", function () {
 
             it("should be `.value` if it is a `boolean`", function () {
                 const anyBoolean = true;
-                assert.strictEqual(new TypedJSON(anyBoolean).boolean, anyBoolean);
+                assert.strictEqual(new TypedJSON(anyBoolean).boolean(), anyBoolean);
             });
 
             it("should be `.undefined` if it is not a `boolean`", function () {
-                assert.isUndefined(new TypedJSON({}).boolean);
+                assert.isUndefined(new TypedJSON({}).boolean());
             });
 
         });
@@ -197,11 +197,11 @@ describe("typed-json.ts", function () {
 
             it("should be `.value` if it is an `object`", function () {
                 const anyObject = {};
-                assert.strictEqual(new TypedJSON(anyObject).object, anyObject);
+                assert.strictEqual(new TypedJSON(anyObject).object(), anyObject);
             });
 
             it("should be `.undefined` if it is not an `object`", function () {
-                assert.isUndefined(new TypedJSON([]).object);
+                assert.isUndefined(new TypedJSON([]).object());
             });
 
         });
@@ -229,11 +229,11 @@ describe("typed-json.ts", function () {
 
             it("should be `.value` if it is an `array`", function () {
                 const anyArray = [9000];
-                assert.strictEqual(new TypedJSON(anyArray).array, anyArray);
+                assert.strictEqual(new TypedJSON(anyArray).array(), anyArray);
             });
 
             it("should be `.undefined` if it is not an `array`", function () {
-                assert.isUndefined(new TypedJSON({}).array);
+                assert.isUndefined(new TypedJSON({}).array());
             });
 
         });
@@ -255,33 +255,33 @@ describe("typed-json.ts", function () {
             });
 
             it("should return the correct value for a single `number` argument", function () {
-                assert.strictEqual(jsonArray.get(1).number, 1);
+                assert.strictEqual(jsonArray.get(1).number(), 1);
             });
 
             it("should return the correct value for a single `string` argument", function () {
-                assert.strictEqual(jsonObject.get("a").string, "a");
+                assert.strictEqual(jsonObject.get("a").string(), "a");
             });
 
             it("should return the correct value for a single number `string` argument", function () {
-                assert.strictEqual(jsonObject.get("0").string, "0");
+                assert.strictEqual(jsonObject.get("0").string(), "0");
             });
 
             it("should return the correct value for multiple `number` arguments", function () {
-                assert.strictEqual(jsonArray.get(2, 1).number, 1);
+                assert.strictEqual(jsonArray.get(2, 1).number(), 1);
             });
 
             it("should return the correct value for multiple `string` arguments", function () {
-                assert.strictEqual(jsonObject.get("object", "a").string, "a");
+                assert.strictEqual(jsonObject.get("object", "a").string(), "a");
             });
 
             it("should return the correct value for multiple `string` and `number` arguments", function () {
-                assert.strictEqual(jsonObject.get("array", 0, "a").string, "a");
+                assert.strictEqual(jsonObject.get("array", 0, "a").string(), "a");
             });
 
             it("should allow chaining", function () {
-                assert.strictEqual(jsonObject.get("array", 0).get("a").string, "a");
-                assert.strictEqual(jsonObject.get("array").get(0, "a").string, "a");
-                assert.strictEqual(jsonObject.get("array").get(0).get("a").string, "a");
+                assert.strictEqual(jsonObject.get("array", 0).get("a").string(), "a");
+                assert.strictEqual(jsonObject.get("array").get(0, "a").string(), "a");
+                assert.strictEqual(jsonObject.get("array").get(0).get("a").string(), "a");
             });
 
             it("should return an undefined `TypedJSON` for a single `number` argument", function () {
@@ -346,15 +346,15 @@ describe("typed-json.ts", function () {
             });
 
             it("should return a `TypedJSON` `string`", function () {
-                assert.strictEqual(TypedJSON.parse(`"any string"`).string, "any string");
+                assert.strictEqual(TypedJSON.parse(`"any string"`).string(), "any string");
             });
 
             it("should return a `TypedJSON` `number`", function () {
-                assert.strictEqual(TypedJSON.parse("9000").number, 9000);
+                assert.strictEqual(TypedJSON.parse("9000").number(), 9000);
             });
 
             it("should return a `TypedJSON` `boolean`", function () {
-                assert.strictEqual(TypedJSON.parse("true").boolean, true);
+                assert.strictEqual(TypedJSON.parse("true").boolean(), true);
             });
 
             it("should return a `TypedJSON` `null`", function () {
@@ -362,11 +362,11 @@ describe("typed-json.ts", function () {
             });
 
             it("should return a `TypedJSON` `array`", function () {
-                assert.deepEqual(TypedJSON.parse("[1, 2, 3]").array, [1, 2, 3]);
+                assert.deepEqual(TypedJSON.parse("[1, 2, 3]").array(), [1, 2, 3]);
             });
 
             it("should return a `TypedJSON` `object`", function () {
-                assert.deepEqual(TypedJSON.parse(`{"a":"a"}`).object, { a: "a" });
+                assert.deepEqual(TypedJSON.parse(`{"a":"a"}`).object(), { a: "a" });
             });
 
             it("should return a `TypedJSON` `undefined` for unparsable JSON", function () {
