@@ -9,118 +9,118 @@ import { TypedJSON } from "./typed-json";
 export interface StringJSON extends TypedJSON {
     readonly value: string;
     isString(): true;
-    readonly string: string;
+    string(): string;
     isNumber(): false;
-    readonly number: undefined;
+    number(): undefined;
     isBoolean(): false;
-    readonly boolean: undefined;
+    boolean(): undefined;
     isNull(): false;
     isUndefined(): false;
     isArray(): false;
-    readonly array: undefined;
+    array(): undefined;
     isObject(): false;
-    readonly object: undefined;
+    object(): undefined;
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
 export interface NumberJSON extends TypedJSON {
     readonly value: number;
     isString(): false;
-    readonly string: undefined;
+    string(): undefined;
     isNumber(): true;
-    readonly number: number;
+    number(): number;
     isBoolean(): false;
-    readonly boolean: undefined;
+    boolean(): undefined;
     isNull(): false;
     isUndefined(): false;
     isArray(): false;
-    readonly array: undefined;
+    array(): undefined;
     isObject(): false;
-    readonly object: undefined;
+    object(): undefined;
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
 export interface BooleanJSON extends TypedJSON {
     readonly value: boolean;
     isString(): false;
-    readonly string: undefined;
+    string(): undefined;
     isNumber(): false;
-    readonly number: undefined;
+    number(): undefined;
     isBoolean(): true;
-    readonly boolean: boolean;
+    boolean(): boolean;
     isNull(): false;
     isUndefined(): false;
     isArray(): false;
-    readonly array: undefined;
+    array(): undefined;
     isObject(): false;
-    readonly object: undefined;
+    object(): undefined;
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
 export interface NullJSON extends TypedJSON {
     readonly value: null;
     isString(): false;
-    readonly string: undefined;
+    string(): undefined;
     isNumber(): false;
-    readonly number: undefined;
+    number(): undefined;
     isBoolean(): false;
-    readonly boolean: undefined;
+    boolean(): undefined;
     isNull(): true;
     isUndefined(): false;
     isArray(): false;
-    readonly array: undefined;
+    array(): undefined;
     isObject(): false;
-    readonly object: undefined;
+    object(): undefined;
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
 export interface UndefinedJSON extends TypedJSON {
     readonly value: undefined;
     isString(): false;
-    readonly string: undefined;
+    string(): undefined;
     isNumber(): false;
-    readonly number: undefined;
+    number(): undefined;
     isBoolean(): false;
-    readonly boolean: undefined;
+    boolean(): undefined;
     isNull(): false;
     isUndefined(): true;
     isArray(): false;
-    readonly array: undefined;
+    array(): undefined;
     isObject(): false;
-    readonly object: undefined;
+    object(): undefined;
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
 export interface ArrayJSON extends TypedJSON {
     readonly value: any[];
     isString(): false;
-    readonly string: undefined;
+    string(): undefined;
     isNumber(): false;
-    readonly number: undefined;
+    number(): undefined;
     isBoolean(): false;
-    readonly boolean: undefined;
+    boolean(): undefined;
     isNull(): false;
     isUndefined(): false;
     isArray(): true;
-    readonly array: any[];
+    array(): any[];
     isObject(): false;
-    readonly object: undefined;
+    object(): undefined;
     get(key: string, ...keys: (string | number)[]): UndefinedJSON;
 }
 
 export interface ObjectJSON extends TypedJSON {
     readonly value: { [key: string]: any; };
     isString(): false;
-    readonly string: undefined;
+    string(): undefined;
     isNumber(): false;
-    readonly number: undefined;
+    number(): undefined;
     isBoolean(): false;
-    readonly boolean: undefined;
+    boolean(): undefined;
     isNull(): false;
     isUndefined(): false;
     isArray(): false;
-    readonly array: undefined;
+    array(): undefined;
     isObject(): true;
-    readonly object: { [key: string]: any; };
+    object(): { [key: string]: any; };
     get(key: number, ...keys: (string | number)[]): UndefinedJSON;
 }
