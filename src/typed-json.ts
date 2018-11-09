@@ -58,6 +58,9 @@ export class TypedJSON {
     /**
      * The raw JS object underlying this value.
      *
+     * Should be of type `unknown`,
+     * but is of type `any` for backwards compatibility reasons.
+     *
      * Prefer to access it through other methods,
      * unless you have some reason to access it directly.
      */
