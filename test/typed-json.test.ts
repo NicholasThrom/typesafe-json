@@ -314,6 +314,47 @@ describe("typed-json.ts", function () {
 
         });
 
+        describe(".keys", function () {
+
+            it("should return the correct array of strings for a `TypedJSON` containing an `object`", function () {
+                const typedJSON = new TypedJSON({
+                    1: "any value",
+                    // This test is testing strange objects, so it requires strange code.
+                    // tslint:disable-next-line:object-literal-key-quotes
+                    "2": "any value",
+                    someOtherKey: "any value",
+                });
+                assert.deepEqual(typedJSON.keys().sort(), ["1", "2", "someOtherKey"].sort());
+            });
+
+            it("should return the correct array of numbers for a `TypedJSON` containing an `array`", function () {
+                const typedJSON = new TypedJSON([7, "any value", {}]);
+                assert.deepEqual(typedJSON.keys().sort(), [0, 1, 2].sort());
+            });
+
+            it("should ignore non-numeric keys in an array", function () {
+                const array: any = [7, "any value", {}];
+                array["someOtherKey"] = "any value";
+                array[100] = "any value";
+                const typedJSON = new TypedJSON(array);
+                assert.deepEqual(typedJSON.keys().sort(), [0, 1, 2, 100].sort());
+            });
+
+            it("should return an empty array for a `TypedJSON` containing neither an `array` nor an `object`", function () {
+                assert.isEmpty(new TypedJSON(0).keys());
+                assert.isEmpty(new TypedJSON(true).keys());
+                assert.isEmpty(new TypedJSON(false).keys());
+                assert.isEmpty(new TypedJSON(null).keys());
+                assert.isEmpty(new TypedJSON(undefined).keys());
+            });
+
+            it("should return an empty array for a `TypedJSON` containing an empty `array` or `object`", function () {
+                assert.isEmpty(new TypedJSON({}).keys());
+                assert.isEmpty(new TypedJSON({}).keys());
+            });
+
+        });
+
         describe(".stringify", function () {
 
             it("should return a string representing the TypedJSON", function () {
