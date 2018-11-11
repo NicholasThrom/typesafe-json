@@ -225,9 +225,18 @@ export class TypedJSON {
     /**
      * Returns an array of the keys of this TypedJSON object.
      *
-     * This array is a `string[]` if this this TypedJSON is an `object`,
+     * This array is a `string[]` if this TypedJSON is an `object`,
      * a `number[]` if this TypedJSON is an array,
      * or an empty array if this TypedJSON is anything else.
+     *
+     * If this TypedJSON's value is an array
+     * with some `string` or `Symbol` keys,
+     * these keys are ignored.
+     *
+     * The type is `(string | number)[]`
+     * instead of `string[] | number[]`
+     * because functions such as `sort` and `map`
+     * have difficulties with `(string | number)[]`.
      *
      * Useful for iterating through TypedJSON objects.
      * For example,
@@ -238,15 +247,21 @@ export class TypedJSON {
      *  }
      * ```
      */
-    public keys(): string[] | number[] {
+    public keys(): (string | number)[] {
         const asObject = this.object();
         if (asObject) {
             return Object.keys(asObject);
         }
+
         const asArray = this.array();
         if (asArray) {
-            return Object.keys(asArray).map((key) => parseInt(key, 10));
+            return Object.keys(asArray)
+                .map((key) => {
+                    return parseInt(key, 10);
+                })
+                .filter((key) => !isNaN(key));
         }
+
         return [];
     }
 
