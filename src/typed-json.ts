@@ -223,6 +223,34 @@ export class TypedJSON {
     }
 
     /**
+     * Returns an array of the keys of this TypedJSON object.
+     *
+     * This array is a `string[]` if this this TypedJSON is an `object`,
+     * a `number[]` if this TypedJSON is an array,
+     * or an empty array if this TypedJSON is anything else.
+     *
+     * Useful for iterating through TypedJSON objects.
+     * For example,
+     * ```ts
+     *  for (const key of typedJSON.keys()) {
+     *      const value = typedJSON.get(value);
+     *      // Do something with `key` and `value`
+     *  }
+     * ```
+     */
+    public keys(): string[] | number[] {
+        const asObject = this.object();
+        if (asObject) {
+            return Object.keys(asObject);
+        }
+        const asArray = this.array();
+        if (asArray) {
+            return Object.keys(asArray).map((key) => parseInt(key, 10));
+        }
+        return [];
+    }
+
+    /**
      * Returns a JSON string representing this TypedJSON object,
      * or undefined, if it is not a valid JSON object.
      */
