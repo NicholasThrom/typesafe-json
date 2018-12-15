@@ -236,7 +236,7 @@ export class TypedJSON {
      * The type is `(string | number)[]`
      * instead of `string[] | number[]`
      * because functions such as `sort` and `map`
-     * have difficulties with `(string | number)[]`.
+     * have difficulties with `string[] | number[]`.
      *
      * Useful for iterating through TypedJSON objects.
      * For example,
