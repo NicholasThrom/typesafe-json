@@ -20,6 +20,7 @@ export interface StringJSON extends TypedJSON {
     array(): undefined;
     isObject(): false;
     object(): undefined;
+    keys(): never[];
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
@@ -37,6 +38,7 @@ export interface NumberJSON extends TypedJSON {
     array(): undefined;
     isObject(): false;
     object(): undefined;
+    keys(): never[];
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
@@ -54,6 +56,7 @@ export interface BooleanJSON extends TypedJSON {
     array(): undefined;
     isObject(): false;
     object(): undefined;
+    keys(): never[];
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
@@ -71,6 +74,7 @@ export interface NullJSON extends TypedJSON {
     array(): undefined;
     isObject(): false;
     object(): undefined;
+    keys(): never[];
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
@@ -88,6 +92,7 @@ export interface UndefinedJSON extends TypedJSON {
     array(): undefined;
     isObject(): false;
     object(): undefined;
+    keys(): never[];
     get(...keys: (string | number)[]): UndefinedJSON;
 }
 
@@ -105,6 +110,7 @@ export interface ArrayJSON extends TypedJSON {
     array(): any[];
     isObject(): false;
     object(): undefined;
+    keys(): number[];
     get(key: string, ...keys: (string | number)[]): UndefinedJSON;
 }
 
@@ -122,5 +128,6 @@ export interface ObjectJSON extends TypedJSON {
     array(): undefined;
     isObject(): true;
     object(): { [key: string]: any; };
+    keys(): string[];
     get(key: number, ...keys: (string | number)[]): UndefinedJSON;
 }
