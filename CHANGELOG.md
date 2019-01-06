@@ -2,6 +2,7 @@
 
 ## next
 \+ Add type information to `.is` checks.<br/>
+\+ Add `.values()`.<br/>
 \* Replaced computed properties with methods.<br/>
 \* Improve documentation.<br/>
 
