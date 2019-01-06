@@ -246,6 +246,9 @@ export class TypedJSON {
      *      // Do something with `key` and `value`
      *  }
      * ```
+     *
+     * Use `.values()` to get an array of only values
+     * if only values are needed instead.
      */
     public keys(): (string | number)[] {
         const asObject = this.object();
@@ -285,6 +288,8 @@ export class TypedJSON {
      *      // Do something with the `value`
      *  }
      * ```
+     *
+     * Use `.keys()` if the keys are needed instead of the values.
      */
     public values(): TypedJSON[] {
         return this.keys().map((key) => this.get(key));
