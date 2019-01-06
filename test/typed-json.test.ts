@@ -375,6 +375,18 @@ describe("typed-json.ts", function () {
 
         });
 
+        describe(".toString()", function () {
+
+            it("should return a string describing the TypedJSON object", function () {
+                assert.strictEqual((new TypedJSON(7)).toString(), `TypedJSON <7>`);
+                assert.strictEqual((new TypedJSON("any value")).toString(), `TypedJSON <"any value">`);
+                assert.strictEqual(
+                    (new TypedJSON({ someKey: "someValue", someOtherKey: [1, 2, {}]})).toString(),
+                    `TypedJSON <{"someKey":"someValue","someOtherKey":[1,2,{}]}>`);
+            });
+
+        });
+
     });
 
 });
