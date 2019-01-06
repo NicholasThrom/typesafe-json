@@ -266,6 +266,31 @@ export class TypedJSON {
     }
 
     /**
+     * Returns an array TypedJSON objects
+     * containing the values of this TypedJSON.
+     *
+     * If this TypedJSON is an `object`,
+     * it returns the values of the `object` wrapped in TypedJSON objects.
+     * If this TypedJSON is an `array`,
+     * it returns the values of the `array` wrapped in TypedJSON objects.
+     * Otherwise, it returns an empty array.
+     *
+     * If this TypedJSON holds an array with nonnumeric keys,
+     * those values are omitted.
+     *
+     * Useful for iterating through TypedJSON objects.
+     * For example,
+     * ```ts
+     *  for (const value of typedJSON.value()) {
+     *      // Do something with the `value`
+     *  }
+     * ```
+     */
+    public values(): TypedJSON[] {
+        return this.keys().map((key) => this.get(key));
+    }
+
+    /**
      * Returns a JSON string representing this TypedJSON object,
      * or undefined, if it is not a valid JSON object.
      */
