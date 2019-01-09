@@ -349,7 +349,7 @@ describe("typed-json.ts", function () {
             });
 
             it("should return an empty array for a `TypedJSON` containing an empty `array` or `object`", function () {
-                assert.isEmpty(new TypedJSON({}).keys());
+                assert.isEmpty(new TypedJSON([]).keys());
                 assert.isEmpty(new TypedJSON({}).keys());
             });
 
