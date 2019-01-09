@@ -281,6 +281,19 @@ export class TypedJSON {
         }
     }
 
+    /**
+     * Returns a string representation of this TypedJSON object.
+     *
+     * This will **not** return JSON.
+     * It is for debug purposes only,
+     * and should not be parsed.
+     *
+     * To get JSON, use `.stringify()`.
+     */
+    public toString() {
+        return `TypedJSON <${this.stringify()}>`;
+    }
+
 }
 
 export {
