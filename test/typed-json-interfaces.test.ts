@@ -27,19 +27,20 @@ describe("typed-json-interfaces.ts", function () {
             const anyString = "any string";
             const typedJSON = new TypedJSON(anyString);
             if (typedJSON.isString()) {
-                const numberJSON: StringJSON = typedJSON;
-                const isString: true = numberJSON.isString();
-                const asString: string = numberJSON.string();
-                const isNumber: false = numberJSON.isNumber();
-                const asNumber: undefined = numberJSON.number();
-                const isBoolean: false = numberJSON.isBoolean();
-                const asBoolean: undefined = numberJSON.boolean();
-                const isNull: false = numberJSON.isNull();
-                const isUndefined: false = numberJSON.isUndefined();
-                const isArray: false = numberJSON.isArray();
-                const asArray: undefined = numberJSON.array();
-                const isObject: false = numberJSON.isObject();
-                const asObject: undefined = numberJSON.object();
+                const stringJSON: StringJSON = typedJSON;
+                const isString: true = stringJSON.isString();
+                const asString: string = stringJSON.string();
+                const isNumber: false = stringJSON.isNumber();
+                const asNumber: undefined = stringJSON.number();
+                const isBoolean: false = stringJSON.isBoolean();
+                const asBoolean: undefined = stringJSON.boolean();
+                const isNull: false = stringJSON.isNull();
+                const isUndefined: false = stringJSON.isUndefined();
+                const isArray: false = stringJSON.isArray();
+                const asArray: undefined = stringJSON.array();
+                const isObject: false = stringJSON.isObject();
+                const asObject: undefined = stringJSON.object();
+                const keys: never[] = stringJSON.keys();
                 assert.isTrue(isString);
                 assert.strictEqual(asString, anyString);
                 assert.isFalse(isNumber);
@@ -52,6 +53,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.isUndefined(asArray);
                 assert.isFalse(isObject);
                 assert.isUndefined(asObject);
+                assert.isEmpty(keys);
             } else {
                 assert.fail();
             }
@@ -88,6 +90,7 @@ describe("typed-json-interfaces.ts", function () {
                 const asArray: undefined = numberJSON.array();
                 const isObject: false = numberJSON.isObject();
                 const asObject: undefined = numberJSON.object();
+                const keys: never[] = numberJSON.keys();
                 assert.isFalse(isString);
                 assert.isUndefined(asString);
                 assert.isTrue(isNumber);
@@ -100,6 +103,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.isUndefined(asArray);
                 assert.isFalse(isObject);
                 assert.isUndefined(asObject);
+                assert.isEmpty(keys);
             } else {
                 assert.fail();
             }
@@ -136,6 +140,7 @@ describe("typed-json-interfaces.ts", function () {
                 const asArray: undefined = booleanJSON.array();
                 const isObject: false = booleanJSON.isObject();
                 const asObject: undefined = booleanJSON.object();
+                const keys: never[] = booleanJSON.keys();
                 assert.isFalse(isString);
                 assert.isUndefined(asString);
                 assert.isFalse(isNumber);
@@ -148,6 +153,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.isUndefined(asArray);
                 assert.isFalse(isObject);
                 assert.isUndefined(asObject);
+                assert.isEmpty(keys);
             } else {
                 assert.fail();
             }
@@ -183,6 +189,7 @@ describe("typed-json-interfaces.ts", function () {
                 const asArray: undefined = nullJSON.array();
                 const isObject: false = nullJSON.isObject();
                 const asObject: undefined = nullJSON.object();
+                const keys: never[] = nullJSON.keys();
                 assert.isFalse(isString);
                 assert.isUndefined(asString);
                 assert.isFalse(isNumber);
@@ -195,6 +202,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.isUndefined(asArray);
                 assert.isFalse(isObject);
                 assert.isUndefined(asObject);
+                assert.isEmpty(keys);
             } else {
                 assert.fail();
             }
@@ -230,6 +238,7 @@ describe("typed-json-interfaces.ts", function () {
                 const asArray: undefined = undefinedJSON.array();
                 const isObject: false = undefinedJSON.isObject();
                 const asObject: undefined = undefinedJSON.object();
+                const keys: never[] = undefinedJSON.keys();
                 assert.isFalse(isString);
                 assert.isUndefined(asString);
                 assert.isFalse(isNumber);
@@ -242,6 +251,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.isUndefined(asArray);
                 assert.isFalse(isObject);
                 assert.isUndefined(asObject);
+                assert.isEmpty(keys);
             } else {
                 assert.fail();
             }
@@ -278,6 +288,7 @@ describe("typed-json-interfaces.ts", function () {
                 const asArray: any[] = arrayJSON.array();
                 const isObject: false = arrayJSON.isObject();
                 const asObject: undefined = arrayJSON.object();
+                const keys: number[] = arrayJSON.keys();
                 assert.isFalse(isString);
                 assert.isUndefined(asString);
                 assert.isFalse(isNumber);
@@ -290,6 +301,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.strictEqual(asArray, anyArray);
                 assert.isFalse(isObject);
                 assert.isUndefined(asObject);
+                assert.isArray(keys);
             } else {
                 assert.fail();
             }
@@ -326,6 +338,7 @@ describe("typed-json-interfaces.ts", function () {
                 const asArray: undefined = objectJSON.array();
                 const isObject: true = objectJSON.isObject();
                 const asObject: { [key: string]: any; } = objectJSON.object();
+                const keys: string[] = objectJSON.keys();
                 assert.isFalse(isString);
                 assert.isUndefined(asString);
                 assert.isFalse(isNumber);
@@ -338,6 +351,7 @@ describe("typed-json-interfaces.ts", function () {
                 assert.isUndefined(asArray);
                 assert.isTrue(isObject);
                 assert.strictEqual(asObject, anyObject);
+                assert.isArray(keys);
             } else {
                 assert.fail();
             }
