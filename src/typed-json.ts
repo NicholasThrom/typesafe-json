@@ -233,6 +233,10 @@ export class TypedJSON {
      * with some `string` or `Symbol` keys,
      * these keys are ignored.
      *
+     * If this TypedJSON's value is an object
+     * with some `Symbol` keys,
+     * these keys are ignored.
+     *
      * The type is `(string | number)[]`
      * instead of `string[] | number[]`
      * because functions such as `sort` and `map`
