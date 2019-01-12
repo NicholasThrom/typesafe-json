@@ -269,7 +269,8 @@ export class TypedJSON {
                 .map((key) => {
                     return parseInt(key, 10);
                 })
-                .filter((key) => !isNaN(key));
+                .filter((key) => !isNaN(key))
+                .sort((a, b) => a - b);
         }
 
         return [];
