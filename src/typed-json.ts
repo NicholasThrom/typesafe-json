@@ -226,6 +226,53 @@ export class TypedJSON {
     }
 
     /**
+     * Returns an array of the keys of this TypedJSON object.
+     *
+     * This array is a `string[]` if this TypedJSON is an `object`,
+     * a `number[]` if this TypedJSON is an array,
+     * or an empty array if this TypedJSON is anything else.
+     *
+     * If this TypedJSON's value is an array
+     * with some `string` or `Symbol` keys,
+     * these keys are ignored.
+     *
+     * If this TypedJSON's value is an object
+     * with some `Symbol` keys,
+     * these keys are ignored.
+     *
+     * The type is `(string | number)[]`
+     * instead of `string[] | number[]`
+     * because functions such as `sort` and `map`
+     * have difficulties with `string[] | number[]`.
+     *
+     * Useful for iterating through TypedJSON objects.
+     * For example,
+     * ```ts
+     *  for (const key of typedJSON.keys()) {
+     *      const value = typedJSON.get(value);
+     *      // Do something with `key` and `value`
+     *  }
+     * ```
+     */
+    public keys(): (string | number)[] {
+        const asObject = this.object();
+        if (asObject) {
+            return Object.keys(asObject);
+        }
+
+        const asArray = this.array();
+        if (asArray) {
+            return Object.keys(asArray)
+                .map((key) => {
+                    return parseInt(key, 10);
+                })
+                .filter((key) => !isNaN(key));
+        }
+
+        return [];
+    }
+
+    /**
      * Returns a JSON string representing this TypedJSON object,
      * or undefined, if it is not a valid JSON object.
      */
@@ -235,6 +282,19 @@ export class TypedJSON {
         } catch {
             return undefined;
         }
+    }
+
+    /**
+     * Returns a string representation of this TypedJSON object.
+     *
+     * This will **not** return JSON.
+     * It is for debug purposes only,
+     * and should not be parsed.
+     *
+     * To get JSON, use `.stringify()`.
+     */
+    public toString() {
+        return `TypedJSON <${this.stringify()}>`;
     }
 
 }
