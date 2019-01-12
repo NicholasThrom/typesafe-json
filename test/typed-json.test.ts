@@ -18,7 +18,7 @@ describe("typed-json.ts", function () {
 
         describe("constructor", function () {
 
-            it("should construct a TypedJSON object, regardless of its argument", function () {
+            it("should construct a `TypedJSON` object, regardless of its argument", function () {
                 assert.instanceOf(new TypedJSON({}), TypedJSON);
                 assert.instanceOf(new TypedJSON([]), TypedJSON);
                 assert.instanceOf(new TypedJSON(0), TypedJSON);
@@ -250,7 +250,7 @@ describe("typed-json.ts", function () {
             };
             const jsonObject = new TypedJSON(object);
 
-            it("should return the itself value for no arguments", function () {
+            it("should return itself for no arguments", function () {
                 assert.strictEqual(jsonArray.get(), jsonArray);
             });
 
@@ -316,7 +316,7 @@ describe("typed-json.ts", function () {
 
         describe(".keys", function () {
 
-            it("should return the correct array of strings for a `TypedJSON` containing an `object`", function () {
+            it("should return the correct `array` of `strings` for a `TypedJSON` containing an `object`", function () {
                 const typedJSON = new TypedJSON({
                     1: "any value",
                     // This test is testing strange objects, so it requires strange code.
@@ -327,12 +327,12 @@ describe("typed-json.ts", function () {
                 assert.deepEqual(typedJSON.keys().sort(), ["1", "2", "someOtherKey"].sort());
             });
 
-            it("should return the correct array of numbers for a `TypedJSON` containing an `array`", function () {
+            it("should return the correct `array` of `numbers` for a `TypedJSON` containing an `array`", function () {
                 const typedJSON = new TypedJSON([7, "any value", {}]);
                 assert.deepEqual(typedJSON.keys().sort(), [0, 1, 2].sort());
             });
 
-            it("should ignore non-numeric keys in an array", function () {
+            it("should ignore non-numeric keys in an `array`", function () {
                 const array: any = [7, "any value", {}];
                 array["someOtherKey"] = "any value";
                 array[100] = "any value";
@@ -384,7 +384,7 @@ describe("typed-json.ts", function () {
                 assert.deepEqual(typedJSON.values().map((typedJSON) => typedJSON.value), [7, "any value", {}]);
             });
 
-            it("should ignore non-numeric keys in an array", function () {
+            it("should ignore non-numeric keys in an `array`", function () {
                 const array: any = [7, "any value", {}];
                 array["someOtherKey"] = "any other value";
                 array[100] = "any third value";
@@ -420,7 +420,7 @@ describe("typed-json.ts", function () {
 
         describe(".stringify", function () {
 
-            it("should return a string representing the TypedJSON", function () {
+            it("should return a `string` representing the `TypedJSON`", function () {
                 const json = new TypedJSON({
                     array: [1, "a", 3],
                     b: "b",
@@ -434,7 +434,7 @@ describe("typed-json.ts", function () {
                 assert.strictEqual(json.stringify(), jsonString);
             });
 
-            it("should return undefined if the TypedJSON contains a circular reference", function () {
+            it("should return `undefined` if the `TypedJSON` contains a circular reference", function () {
                 const object = { a: {} };
                 object.a = object;
 
@@ -449,31 +449,31 @@ describe("typed-json.ts", function () {
                 assert.instanceOf(TypedJSON.parse(`"any valid JSON"`), TypedJSON);
             });
 
-            it("should return a `TypedJSON` `string`", function () {
+            it("should return a `TypedJSON` object containing a `string", function () {
                 assert.strictEqual(TypedJSON.parse(`"any string"`).string(), "any string");
             });
 
-            it("should return a `TypedJSON` `number`", function () {
+            it("should return a `TypedJSON` object containing a `number`", function () {
                 assert.strictEqual(TypedJSON.parse("9000").number(), 9000);
             });
 
-            it("should return a `TypedJSON` `boolean`", function () {
+            it("should return a `TypedJSON` object containing a `boolean`", function () {
                 assert.strictEqual(TypedJSON.parse("true").boolean(), true);
             });
 
-            it("should return a `TypedJSON` `null`", function () {
+            it("should return a `TypedJSON` object containing `null`", function () {
                 assert.isTrue(TypedJSON.parse("null").isNull());
             });
 
-            it("should return a `TypedJSON` `array`", function () {
+            it("should return a `TypedJSON` object containing an `array`", function () {
                 assert.deepEqual(TypedJSON.parse("[1, 2, 3]").array(), [1, 2, 3]);
             });
 
-            it("should return a `TypedJSON` `object`", function () {
+            it("should return a `TypedJSON` object containing an `object`", function () {
                 assert.deepEqual(TypedJSON.parse(`{"a":"a"}`).object(), { a: "a" });
             });
 
-            it("should return a `TypedJSON` `undefined` for unparsable JSON", function () {
+            it("should return a `TypedJSON` object containing `undefined` for unparsable JSON", function () {
                 assert.isTrue(TypedJSON.parse("nope").isUndefined());
             });
 

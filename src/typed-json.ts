@@ -27,10 +27,10 @@ import {
 export class TypedJSON {
 
     /**
-     * Parses the passed `json` to produce a TypedJSON object.
+     * Parses the passed `json` to produce a `TypedJSON` object.
      *
      * If `json` is not valid JSON,
-     * returns a TypedJSON object containing `undefined`.
+     * returns a `TypedJSON` object containing `undefined`.
      *
      * For example
      * ``TypedJSON.parse(`{ "a": [{ "b": "c" }] }`).get("a", 0, "b").string === "c";``
@@ -46,7 +46,7 @@ export class TypedJSON {
     }
 
     /**
-     * Constructs a new TypedJSON object with the specified `value`.
+     * Constructs a new `TypedJSON` object with the specified `value`.
      *
      * If `value` is a `string`, it is **not** parsed.
      * Use `TypedJSON.parse` for that.
@@ -56,7 +56,7 @@ export class TypedJSON {
     }
 
     /**
-     * The raw JS object underlying this value.
+     * The raw JS object underlying this `TypedJSON` object.
      *
      * Should be of type `unknown`,
      * but is of type `any` for backwards compatibility reasons.
@@ -67,14 +67,14 @@ export class TypedJSON {
     public readonly value: any;
 
     /**
-     * `true` if this TypedJSON object represents a `string`.
+     * `true` if this `TypedJSON` object represents a `string`.
      */
     public isString(): this is StringJSON {
         return typeof this.value === "string";
     }
 
     /**
-     * The value of this TypedJSON object as a `string`,
+     * The value of this `TypedJSON` object as a `string`,
      * or `undefined` if it is not a `string`.
      */
     public string() {
@@ -82,14 +82,14 @@ export class TypedJSON {
     }
 
     /**
-     * `true` if this TypedJSON object represents a `number`.
+     * `true` if this `TypedJSON` object represents a `number`.
      */
     public isNumber(): this is NumberJSON {
         return typeof this.value === "number";
     }
 
     /**
-     * The value of this TypedJSON object as a `number`,
+     * The value of this `TypedJSON` object as a `number`,
      * or `undefined` if it is not a `number`.
      */
     public number() {
@@ -97,14 +97,14 @@ export class TypedJSON {
     }
 
     /**
-     * `true` if this TypedJSON object represents a `boolean`.
+     * `true` if this `TypedJSON` object represents a `boolean`.
      */
     public isBoolean(): this is BooleanJSON {
         return typeof this.value === "boolean";
     }
 
     /**
-     * The value of this TypedJSON object as a `boolean`,
+     * The value of this `TypedJSON` object as a `boolean`,
      * or `undefined` if it is not a `boolean`.
      */
     public boolean() {
@@ -112,7 +112,7 @@ export class TypedJSON {
     }
 
     /**
-     * `true` if this TypedJSON object represents a `null`.
+     * `true` if this `TypedJSON` object represents a `null`.
      *
      * There is no `.null`
      * since there is only one possible `null` value.
@@ -122,7 +122,7 @@ export class TypedJSON {
     }
 
     /**
-     * `true` if this TypedJSON object is `undefined`.
+     * `true` if this `TypedJSON` object is `undefined`.
      *
      * There is no `.undefined`
      * since there is only one possible `undefined` value.
@@ -132,55 +132,57 @@ export class TypedJSON {
     }
 
     /**
-     * `true` if this TypedJSON object is a array.
+     * `true` if this `TypedJSON` object is an `array`.
      */
     public isArray(): this is ArrayJSON {
         return Array.isArray(this.value);
     }
 
     /**
-     * The value of this TypedJSON object as an array,
-     * or `undefined` if it is not an array.
+     * The value of this `TypedJSON` object as an `array`,
+     * or `undefined` if it is not an `array`.
      *
      * Prefer using `.get` for access,
-     * instead of using the array directly.
+     * instead of using the `array` directly.
      */
     public array() {
         if (this.isArray()) { return this.value as any[]; }
     }
 
     /**
-     * `true` if this TypedJSON object is an object.
+     * `true` if this `TypedJSON` object is an `object`.
      */
     public isObject(): this is ObjectJSON {
         return !this.isArray() && !this.isNull() && typeof this.value === "object";
     }
 
     /**
-     * The value of this TypedJSON object as an object,
+     * The value of this `TypedJSON` object as an `object`,
      * or `undefined` if it is not an object.
      *
      * Prefer using `.get` for access,
-     * instead of using the object directly.
+     * instead of using the `object` directly.
      */
     public object() {
         if (this.isObject()) { return this.value as { [key: string]: any }; }
     }
 
     /**
-     * Gets the TypedJSON object under the specified chain of keys,
-     * or a TypedJSON object containing `undefined` if it is not available.
+     * Gets the `TypedJSON` object under the specified chain of keys,
+     * or a `TypedJSON` object containing `undefined` if it is not available.
      *
      * For example,
      * ```ts
      * new TypedJSON({ a: [{ b: "c" }] }).get("a", 0, "b").string === "c";
      * ```
      *
-     * Only `string` keys can be used on TypedJSON objects with `.isObject`,
-     * and only `number` keys can be used on TypedJSON objects with `.isArray`.
+     * Only `string` keys can be used on `TypedJSON` objects
+     * that contain an `object`.
+     * and only `number` keys can be used on `TypedJSON` objects
+     * that contain an `array`.
      *
      * Note that `({ 1: 1 })["1"] === 1`,
-     * so number-keyed objects can still be accessed via strings.
+     * so `number`-keyed objects can still be accessed via `strings`.
      *
      * @param keys The chain of keys to the value to return.
      */
@@ -196,8 +198,8 @@ export class TypedJSON {
     /**
      * Prefer `.get`.
      *
-     * Gets the TypedJSON object under the specified `key`,
-     * or a TypedJSON object containing `undefined` if it is not available.
+     * Gets the `TypedJSON` object under the specified `key`,
+     * or a `TypedJSON` object containing `undefined` if it is not available.
      *
      * For example,
      * ```ts
@@ -205,11 +207,13 @@ export class TypedJSON {
      * TypedJSON.parse(`{ a: "a", b: "b" }`)._getSingle("a").string === "a";
      * ```
      *
-     * Only `string` keys can be used if this TypedJSON object `.isObject`,
-     * and only `number` keys can be used if this TypedJSON object `.isArray`.
+     * Only `string` keys can be used on `TypedJSON` objects
+     * that contain an `object`.
+     * and only `number` keys can be used on `TypedJSON` objects
+     * that contain an `array`.
      *
      * Note that `({ 1: 1 })["1"] === 1`,
-     * so number-keyed objects can still be accessed via strings.
+     * so `number`-keyed objects can still be accessed via `strings`.
      *
      * @param key The key of the value to return.
      */
@@ -226,15 +230,15 @@ export class TypedJSON {
     }
 
     /**
-     * Returns an array of the keys of this TypedJSON object.
+     * Returns an `array` of the keys of this `TypedJSON` object.
      *
-     * This array is a `string[]` if this TypedJSON is an `object`,
-     * a `number[]` if this TypedJSON is an array,
+     * This array is a `string[]` if this `TypedJSON` is an `object`,
+     * a `number[]` if this TypedJSON is an `array`,
      * or an empty array if this TypedJSON is anything else.
      *
-     * If this TypedJSON's value is an array,
+     * If this `TypedJSON` object's value is an `array`,
      * only non-negative integers
-     * will be included in the resulting array,
+     * will be included in the resulting `array`,
      * in ascending order.
      *
      * If this TypedJSON's value is an object
@@ -246,7 +250,7 @@ export class TypedJSON {
      * because functions such as `sort` and `map`
      * have difficulties with `string[] | number[]`.
      *
-     * Useful for iterating through TypedJSON objects.
+     * Useful for iterating through `TypedJSON` objects.
      * For example,
      * ```ts
      *  for (const key of typedJSON.keys()) {
@@ -278,21 +282,21 @@ export class TypedJSON {
     }
 
     /**
-     * Returns an array TypedJSON objects
-     * containing the values of this TypedJSON.
+     * Returns an array of `TypedJSON` objects
+     * containing the values of this `TypedJSON`.
      *
-     * If this TypedJSON is an `object`,
-     * it returns the values of the `object` wrapped in TypedJSON objects.
-     * If this TypedJSON is an `array`,
-     * it returns the values of the `array` wrapped in TypedJSON objects.
-     * Otherwise, it returns an empty array.
+     * If this `TypedJSON` object contains an `object`,
+     * it returns the values of the `object` wrapped in `TypedJSON` objects.
+     * If this `TypedJSON` contains an `array`,
+     * it returns the values of the `array` wrapped in `TypedJSON` objects.
+     * Otherwise, it returns an empty `array`.
      *
-     * If this TypedJSON's value is an array,
+     * If this `TypedJSON` object's value is an `array`,
      * only values with non-negative integer keys
-     * will be included in the resulting array,
+     * will be included in the resulting `array`,
      * in ascending order.
      *
-     * Useful for iterating through TypedJSON objects.
+     * Useful for iterating through `TypedJSON` objects.
      * For example,
      * ```ts
      *  for (const value of typedJSON.value()) {
@@ -307,8 +311,8 @@ export class TypedJSON {
     }
 
     /**
-     * Returns a JSON string representing this TypedJSON object,
-     * or undefined, if it is not a valid JSON object.
+     * Returns a JSON string representing this `TypedJSON` object,
+     * or `undefined`, if it is not a valid JSON object.
      */
     public stringify() {
         try {
@@ -319,7 +323,7 @@ export class TypedJSON {
     }
 
     /**
-     * Returns a string representation of this TypedJSON object.
+     * Returns a `string` representation of this `TypedJSON` object.
      *
      * This will **not** return JSON.
      * It is for debug purposes only,
