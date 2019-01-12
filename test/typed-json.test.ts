@@ -361,7 +361,7 @@ describe("typed-json.ts", function () {
                 array["string"] = "string";
                 array[-1] = -1;
 
-                assert.deepEqual(new TypedJSON(array).keys(), [-1, 0, 1, 2, 5, 10]);
+                assert.deepEqual(new TypedJSON(array).keys(), [0, 1, 2, 5, 10]);
             });
 
         });
@@ -413,7 +413,7 @@ describe("typed-json.ts", function () {
                 array["string"] = "string";
                 array[-1] = -1;
 
-                assert.deepEqual(new TypedJSON(array).values().map((typedJSON) => typedJSON.value), [-1, 0, 1, 2, 5, 10]);
+                assert.deepEqual(new TypedJSON(array).values().map((typedJSON) => typedJSON.value), [0, 1, 2, 5, 10]);
             });
 
         });
