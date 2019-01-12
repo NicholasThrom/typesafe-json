@@ -232,9 +232,10 @@ export class TypedJSON {
      * a `number[]` if this TypedJSON is an array,
      * or an empty array if this TypedJSON is anything else.
      *
-     * If this TypedJSON's value is an array
-     * with some `string` or `Symbol` keys,
-     * these keys are ignored.
+     * If this TypedJSON's value is an array,
+     * only non-negative integers
+     * will be included in the resulting array,
+     * in ascending order.
      *
      * If this TypedJSON's value is an object
      * with some `Symbol` keys,
@@ -286,8 +287,10 @@ export class TypedJSON {
      * it returns the values of the `array` wrapped in TypedJSON objects.
      * Otherwise, it returns an empty array.
      *
-     * If this TypedJSON holds an array with nonnumeric keys,
-     * those values are omitted.
+     * If this TypedJSON's value is an array,
+     * only values with non-negative integer keys
+     * will be included in the resulting array,
+     * in ascending order.
      *
      * Useful for iterating through TypedJSON objects.
      * For example,
