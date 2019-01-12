@@ -353,6 +353,17 @@ describe("typed-json.ts", function () {
                 assert.isEmpty(new TypedJSON({}).keys());
             });
 
+            it("should be in order for a `TypedJSON` containing an `array`", function () {
+                const array: any = [0, 1, 2];
+                array[10] = 10;
+                array[1] = 1;
+                array[5] = 5;
+                array["string"] = "string";
+                array[-1] = -1;
+
+                assert.deepEqual(new TypedJSON(array).keys(), [0, 1, 2, 5, 10]);
+            });
+
         });
 
         describe(".values", function () {
@@ -392,6 +403,17 @@ describe("typed-json.ts", function () {
             it("should return an empty array for a `TypedJSON` containing an empty `array` or `object`", function () {
                 assert.isEmpty(new TypedJSON({}).values());
                 assert.isEmpty(new TypedJSON({}).values());
+            });
+
+            it("should be in order for a `TypedJSON` containing an `array`", function () {
+                const array: any = [0, 1, 2];
+                array[10] = 10;
+                array[1] = 1;
+                array[5] = 5;
+                array["string"] = "string";
+                array[-1] = -1;
+
+                assert.deepEqual(new TypedJSON(array).values().map((typedJSON) => typedJSON.value), [0, 1, 2, 5, 10]);
             });
 
         });
