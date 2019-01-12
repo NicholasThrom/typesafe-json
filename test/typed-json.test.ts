@@ -349,7 +349,7 @@ describe("typed-json.ts", function () {
             });
 
             it("should return an empty array for a `TypedJSON` containing an empty `array` or `object`", function () {
-                assert.isEmpty(new TypedJSON({}).keys());
+                assert.isEmpty(new TypedJSON([]).keys());
                 assert.isEmpty(new TypedJSON({}).keys());
             });
 
@@ -453,6 +453,18 @@ describe("typed-json.ts", function () {
 
             it("should return a `TypedJSON` `undefined` for unparsable JSON", function () {
                 assert.isTrue(TypedJSON.parse("nope").isUndefined());
+            });
+
+        });
+
+        describe(".toString()", function () {
+
+            it("should return a string describing the TypedJSON object", function () {
+                assert.strictEqual((new TypedJSON(7)).toString(), `TypedJSON <7>`);
+                assert.strictEqual((new TypedJSON("any value")).toString(), `TypedJSON <"any value">`);
+                assert.strictEqual(
+                    (new TypedJSON({ someKey: "someValue", someOtherKey: [1, 2, {}]})).toString(),
+                    `TypedJSON <{"someKey":"someValue","someOtherKey":[1,2,{}]}>`);
             });
 
         });

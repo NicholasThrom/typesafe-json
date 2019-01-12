@@ -58,6 +58,9 @@ export class TypedJSON {
     /**
      * The raw JS object underlying this value.
      *
+     * Should be of type `unknown`,
+     * but is of type `any` for backwards compatibility reasons.
+     *
      * Prefer to access it through other methods,
      * unless you have some reason to access it directly.
      */
@@ -233,6 +236,10 @@ export class TypedJSON {
      * with some `string` or `Symbol` keys,
      * these keys are ignored.
      *
+     * If this TypedJSON's value is an object
+     * with some `Symbol` keys,
+     * these keys are ignored.
+     *
      * The type is `(string | number)[]`
      * instead of `string[] | number[]`
      * because functions such as `sort` and `map`
@@ -305,6 +312,19 @@ export class TypedJSON {
         } catch {
             return undefined;
         }
+    }
+
+    /**
+     * Returns a string representation of this TypedJSON object.
+     *
+     * This will **not** return JSON.
+     * It is for debug purposes only,
+     * and should not be parsed.
+     *
+     * To get JSON, use `.stringify()`.
+     */
+    public toString() {
+        return `TypedJSON <${this.stringify()}>`;
     }
 
 }

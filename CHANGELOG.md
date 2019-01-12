@@ -2,7 +2,9 @@
 
 ## next
 \+ Add type information to `.is` checks.<br/>
+\+ Add `.keys()`.<br/>
 \+ Add `.values()`.<br/>
+\+ Add `.toString()`.<br/>
 \* Replaced computed properties with methods.<br/>
 \* Improve documentation.<br/>
 
