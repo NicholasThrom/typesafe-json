@@ -253,6 +253,9 @@ export class TypedJSON {
      *      // Do something with `key` and `value`
      *  }
      * ```
+     *
+     * Use `.values()` to get an array of only values
+     * if only values are needed instead.
      */
     public keys(): (string | number)[] {
         const asObject = this.object();
@@ -270,6 +273,33 @@ export class TypedJSON {
         }
 
         return [];
+    }
+
+    /**
+     * Returns an array TypedJSON objects
+     * containing the values of this TypedJSON.
+     *
+     * If this TypedJSON is an `object`,
+     * it returns the values of the `object` wrapped in TypedJSON objects.
+     * If this TypedJSON is an `array`,
+     * it returns the values of the `array` wrapped in TypedJSON objects.
+     * Otherwise, it returns an empty array.
+     *
+     * If this TypedJSON holds an array with nonnumeric keys,
+     * those values are omitted.
+     *
+     * Useful for iterating through TypedJSON objects.
+     * For example,
+     * ```ts
+     *  for (const value of typedJSON.value()) {
+     *      // Do something with the `value`
+     *  }
+     * ```
+     *
+     * Use `.keys()` if the keys are needed instead of the values.
+     */
+    public values(): TypedJSON[] {
+        return this.keys().map((key) => this.get(key));
     }
 
     /**

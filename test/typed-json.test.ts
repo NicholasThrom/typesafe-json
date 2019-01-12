@@ -355,6 +355,47 @@ describe("typed-json.ts", function () {
 
         });
 
+        describe(".values", function () {
+
+            it("should return the correct array of `TypedJSON` objects for a `TypedJSON` containing an `object`", function () {
+                const typedJSON = new TypedJSON({
+                    1: "some value",
+                    // This test is testing strange objects, so it requires strange code.
+                    // tslint:disable-next-line:object-literal-key-quotes
+                    "2": 123,
+                    someOtherKey: undefined,
+                });
+                assert.deepEqual(typedJSON.values().map((typedJSON) => typedJSON.value).sort(), ["some value", 123, undefined].sort());
+            });
+
+            it("should return the correct array of `TypedJSON` objects for a `TypedJSON` containing an `array`", function () {
+                const typedJSON = new TypedJSON([7, "any value", {}]);
+                assert.deepEqual(typedJSON.values().map((typedJSON) => typedJSON.value), [7, "any value", {}]);
+            });
+
+            it("should ignore non-numeric keys in an array", function () {
+                const array: any = [7, "any value", {}];
+                array["someOtherKey"] = "any other value";
+                array[100] = "any third value";
+                const typedJSON = new TypedJSON(array);
+                assert.deepEqual(typedJSON.values().map((typedJSON) => typedJSON.value), [7, "any value", {}, "any third value"]);
+            });
+
+            it("should return an empty array for a `TypedJSON` containing neither an `array` nor an `object`", function () {
+                assert.isEmpty(new TypedJSON(0).values());
+                assert.isEmpty(new TypedJSON(true).values());
+                assert.isEmpty(new TypedJSON(false).values());
+                assert.isEmpty(new TypedJSON(null).values());
+                assert.isEmpty(new TypedJSON(undefined).values());
+            });
+
+            it("should return an empty array for a `TypedJSON` containing an empty `array` or `object`", function () {
+                assert.isEmpty(new TypedJSON({}).values());
+                assert.isEmpty(new TypedJSON({}).values());
+            });
+
+        });
+
         describe(".stringify", function () {
 
             it("should return a string representing the TypedJSON", function () {
