@@ -3,9 +3,9 @@ For #[issue].
 [Explain what this PR does.]
 
 - [ ] All changes made.
-- [ ] Code changes have been read over.
-- [ ] Code actually works.
-- [ ] Tests written or not required.
+- [ ] Changes have been read over.
+- [ ] Code, if there is any, actually works.
+- [ ] Tests written or not are required.
 - [ ] `npm test` passes.
 - [ ] `npm run coverage` shows 100% coverage.
 - [ ] The changelog has been updated, if necessary.
