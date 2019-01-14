@@ -30,8 +30,8 @@ if (e === undefined) {
 Run `npm i typesafe-json` in your project.
 
 Type information is included automatically.
-Don't install `@types/typesafe-json`,
-is it neither needed nor possible.
+Don't install `@types/typesafe-json`;
+it is neither needed nor possible.
 
 ## Use
 
