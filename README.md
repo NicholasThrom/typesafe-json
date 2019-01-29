@@ -48,8 +48,8 @@ const typedJSON2 = new TypedJSON({a:[0,{b:["c","d"]}]});
 const typedJSON3 = new TypedJSON(12);
 
 // .get returns another TypedJSON object.
-const typedJSON4 = typedJSON1.get("a", 1, "b");
-const typedJSON5 = typedJSON4.get(0);
+const typedJSON4 = typedJSON1.get("a", 1, "b"); // new TypedJSON(["c", "d"])
+const typedJSON5 = typedJSON4.get(0); // new TypedJSON("c")
 
 // The value of a TypedJSON object can be accessed like so.
 // Accessors return `undefined` if the TypedJSON object
