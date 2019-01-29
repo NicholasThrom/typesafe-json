@@ -80,8 +80,8 @@ const numberJSON = new TypedJSON(12);
 arrayJSON.values(); // [new TypedJSON("a"), new TypedJSON("b")]
 objectJSON.values(); // [new TypedJSON(1), new TypedJSON(2)]
 numberJSON.values(); // []
-arrayJSON.keys(); // ["a", "b"]
-objectJSON.keys(); // [1, 2]
+arrayJSON.keys(); // [0, 1]
+objectJSON.keys(); // ["a", "b"]
 numberJSON.keys(); // []
 
 // Invalid operations return either `undefined`,
