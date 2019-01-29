@@ -14,12 +14,12 @@ making it more concise, readable, and reliable.
 ```ts
 const json = `{"a":[0,{"b":["c","d"]}]}`;
 
-let c = TypedJSON.parse(json).get("a", 1, "b", 0).string;
+let c = TypedJSON.parse(json).get("a", 1, "b", 0).string();
 if (c !== undefined) {
     // c is guaranteed to be a string
 }
 
-let e = TypedJSON.parse(json).get("z", 99, "x", 12).number;
+let e = TypedJSON.parse(json).get("z", 99, "x", 12).number();
 if (e === undefined) {
     // No errors are thrown
 }
