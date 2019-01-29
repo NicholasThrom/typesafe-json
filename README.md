@@ -14,12 +14,12 @@ making it more concise, readable, and reliable.
 ```ts
 const json = `{"a":[0,{"b":["c","d"]}]}`;
 
-let c = TypedJSON.parse(json).get("a", 1, "b", 0).string;
+let c = TypedJSON.parse(json).get("a", 1, "b", 0).string();
 if (c !== undefined) {
     // c is guaranteed to be a string
 }
 
-let e = TypedJSON.parse(json).get("z", 99, "x", 12).number;
+let e = TypedJSON.parse(json).get("z", 99, "x", 12).number();
 if (e === undefined) {
     // No errors are thrown
 }
@@ -54,9 +54,9 @@ const typedJSON5 = typedJSON4.get(0);
 // The value of a TypedJSON object can be accessed like so.
 // Accessors return `undefined` if the TypedJSON object
 // does not contain the correct type.
-const number = typedJSON5.number; // undefined
-const string = typedJSON5.string; // "c"
-const boolean = typedJSON5.boolean; // undefined
+const number = typedJSON5.number(); // undefined
+const string = typedJSON5.string(); // "c"
+const boolean = typedJSON5.boolean(); // undefined
 // .object and .array also exist, but are not recommended.
 // Instead, use .get().
 
@@ -75,7 +75,7 @@ const isUndefined = typedJSON5.isUndefined() // false
 const invalidJSON = TypedJSON.parse("invalid json");
 invalidJSON.isUndefined() // true
 invalidJSON.get("a", 1, "b", 2).isUndefined() // true
-invalidJSON.number // undefined
+invalidJSON.number() // undefined
 invalidJSON.stringify() // undefined
 
 // .stringify() returns the JSON representation string
