@@ -54,29 +54,45 @@ const typedJSON5 = typedJSON4.get(0);
 // The value of a TypedJSON object can be accessed like so.
 // Accessors return `undefined` if the TypedJSON object
 // does not contain the correct type.
-const number = typedJSON5.number(); // undefined
-const string = typedJSON5.string(); // "c"
-const boolean = typedJSON5.boolean(); // undefined
+const typedJSON = new TypedJSON("c");
+const number = typedJSON.number(); // undefined
+const string = typedJSON.string(); // "c"
+const boolean = typedJSON.boolean(); // undefined
 // .object and .array also exist, but are not recommended.
 // Instead, use .get().
 
-// Checks exists to check the type without getting the value:
-const isNumber = typedJSON5.isNumber() // false
-const isString = typedJSON5.isString() // true
-const isBoolean = typedJSON5.isBoolean() // false
-const isArray = typedJSON5.isArray() // false
-const isObject = typedJSON5.isObject() // false
-const isNull = typedJSON5.isNull() // false
-const isUndefined = typedJSON5.isUndefined() // false
+// Checks exists to check the type without getting the value.
+const isNumber = typedJSON.isNumber() // false
+const isString = typedJSON.isString() // true
+const isBoolean = typedJSON.isBoolean() // false
+const isArray = typedJSON.isArray() // false
+const isObject = typedJSON.isObject() // false
+const isNull = typedJSON.isNull() // false
+const isUndefined = typedJSON.isUndefined() // false
 // The type system is able to use the type information these return.
 
-// Invalid operations return either `undefined`
-// or a TypedJSON containing `undefined`.
+// .values() and .keys() return arrays.
+// Both work for both arrays and objects.
+// Otherwise they return an empty array.
+const arrayJSON = new TypedJSON(["a", "b"]);
+const objectJSON = new TypedJSON({ a: 1, b: 2});
+const numberJSON = new TypedJSON(12);
+arrayJSON.values(); // [new TypedJSON("a"), new TypedJSON("b")]
+objectJSON.values(); // [new TypedJSON(1), new TypedJSON(2)]
+numberJSON.values(); // []
+arrayJSON.keys(); // [0, 1]
+objectJSON.keys(); // ["a", "b"]
+numberJSON.keys(); // []
+
+// Invalid operations return either `undefined`,
+// a TypedJSON containing `undefined`,
+// or an empty array.
 const invalidJSON = TypedJSON.parse("invalid json");
 invalidJSON.isUndefined() // true
 invalidJSON.get("a", 1, "b", 2).isUndefined() // true
 invalidJSON.number() // undefined
 invalidJSON.stringify() // undefined
+invalidJSON.keys() // []
 
 // .stringify() returns the JSON representation string
 // of the TypedJSON object, or undefined if it cannot.
