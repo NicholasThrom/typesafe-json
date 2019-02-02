@@ -1,6 +1,6 @@
 # Changelog
 
-## next
+## 0.2.0
 \+ Add type information to `.is` checks.<br/>
 \+ Add `.keys()`.<br/>
 \+ Add `.values()`.<br/>
