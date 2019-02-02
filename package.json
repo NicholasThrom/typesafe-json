@@ -1,6 +1,6 @@
 {
     "name": "typesafe-json",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "An easy, typesafe way to handle JSON.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
