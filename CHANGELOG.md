@@ -14,8 +14,8 @@ All computed properties are now methods.
 
 Instead of
 `.isString`, `.isNumber`, `.isBoolean`, `.isNull`, `.isUndefined`, `.isObject`, `.isArray`,
-`.string`, `.number`, `.boolean`, `.object`, and `.array`
-use
+`.string`, `.number`, `.boolean`, `.object`, and `.array`<br/>
+use<br/>
 `.isString()`, `.isNumber()`, `.isBoolean()`, `.isNull()`, `.isUndefined()`, `.isObject()`, `.isArray()`,
 `.string()`, `.number()`, `.boolean()`, `.object()`, and `.array()`.
 
