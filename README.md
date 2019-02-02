@@ -9,6 +9,10 @@ and check the type is correct before you can use it.
 This package is designed to reduce that boilerplate,
 making it more concise, readable, and reliable.
 
+Note there have been some breaking changes since `v0.0.1`.
+See [the changelog](https://github.com/NicholasThrom/typesafe-json/blob/master/CHANGELOG.md)
+for details.
+
 ## Example
 
 ```ts
