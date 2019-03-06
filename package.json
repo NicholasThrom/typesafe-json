@@ -31,16 +31,16 @@
     },
     "homepage": "https://github.com/NicholasThrom/typesafe-json#readme",
     "devDependencies": {
-        "@types/chai": "^4.1.4",
-        "@types/mocha": "^5.2.5",
-        "@types/sinon": "^5.0.1",
-        "chai": "^4.1.2",
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.6",
+        "@types/sinon": "^5.0.7",
+        "chai": "^4.2.0",
         "istanbul": "^0.4.5",
         "mocha": "^5.2.0",
         "nyc": "^13.3.0",
         "sinon": "^5.0.1",
-        "ts-node": "^7.0.0",
-        "tslint": "^5.11.0",
-        "typescript": "^3.0.1"
+        "ts-node": "^7.0.1",
+        "tslint": "^5.13.1",
+        "typescript": "^3.3.3333"
     }
 }
